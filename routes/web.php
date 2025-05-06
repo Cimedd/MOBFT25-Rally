@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/find-the-relic', function () {
+    return view('find-the-relic');
+});
+
+
+Route::get('/jungle-clash', function () {
+    return view('jungle-clash');
+});
