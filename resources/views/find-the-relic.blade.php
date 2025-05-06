@@ -10,3 +10,4 @@
     <h1>find the relic</h1>
 </body>
 </html>
+{{-- Langsung tembak urlnya ya, bisa dicek di route/web.php --}}

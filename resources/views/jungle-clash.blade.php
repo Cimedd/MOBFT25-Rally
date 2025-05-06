@@ -10,3 +10,4 @@
     <h1>jungle clash</h1>
 </body>
 </html>
+{{-- Langsung tembak urlnya ya, bisa dicek di route/web.php --}}
