@@ -21,6 +21,14 @@ Route::get('/find-the-relic', function () {
     return view('find-the-relic');
 });
 
+Route::get('/displaycards', function () {
+    return view('displaycards');
+})->name('displaycards');
+
+Route::get('/pertanyaanrelic', function () {
+    $kode = request()->get('kode');
+    return view('pertanyaanrelic', ['kode' => $kode]);
+})->name('pertanyaanrelic');
 
 Route::get('/jungle-clash', function () {
     return view('jungle-clash');
