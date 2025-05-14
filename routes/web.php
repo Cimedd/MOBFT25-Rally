@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RelicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,15 +18,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/find-the-relic', function () {
-    return view('find-the-relic');
-});
+Route::get('/find-the-relic',[RelicController::class, 'findTheRelic']);
 
-Route::get('/displaycards', function () {
-    return view('displaycards');
-})->name('displaycards');
+Route::get('/relic', [RelicController::class, 'index'])->name('displaycards');
+Route::post('/relic', [RelicController::class, 'inputKode'])->name('inputKode');
 
-Route::get('/pertanyaanrelic', function () {
+Route::get('/pertanyaanrelic/{kode}', function () {
     $kode = request()->get('kode');
     return view('pertanyaanrelic', ['kode' => $kode]);
 })->name('pertanyaanrelic');

@@ -1,70 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Find the Relic - Pilih Kelompok</title>
-    <link rel = "stylesheet" href = "css/home.css">
-    <?php
+    <title>Find the Relic</title>
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
 
-    session_start();
+        .title {
+            font-size: 5rem;
+            color: #2c3e50;
+            margin-bottom: 150px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
 
-        $cards = [
-    1 => [
-        'code' => 'JUNGLE',
-        'question' => 'Apa nama ilmiah dari pohon jati?',
-        'options' => ['Tectona', 'Ficus', 'Dipterocarpus', 'Albizia'],
-        'answer' => 'Tectona grandis',
-        'is_relic' => true,
-        'answered' => false,
-        'image' => 'img/Angka 1-01.jpg', // gambar relic (ditampilkan setelah benar)
-    ],
-    2 => [
-        'code' => 'RIVER',
-        'question' => 'Hewan mana yang hidup di sungai?',
-        'options' => ['Ikan Arwana', 'Komodo', 'Elang Jawa', 'Kucing'],
-        'answer' => 'Ikan Arwana',
-        'is_relic' => false,
-        'answered' => false,
-        'image' => 'img/Angka 2-01.jpg', // pengecoh
-    ],
-    // ... sampai 12
-];
+        .group-selection {
+            margin-bottom: 60px;
+        }
 
-$player = [];
+        .selection-label {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            display: block;
+        }
 
-$_SESSION['kartu'] = $cards;
-$_SESSION['pemain'] = $player;
-    ?>
+        .select-group {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        select {
+            padding: 15px 25px;
+            border-radius: 8px;
+            border: 2px solid #3498db;
+            font-size: 1.2rem;
+            background-color: white;
+            cursor: pointer;
+            min-width: 200px;
+            text-align: center;
+        }
+
+        .start-button {
+            padding: 18px 50px;
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 40px;
+            transition: all 0.3s;
+        }
+
+        .start-button:hover {
+            background-color: #27ae60;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+
 </head>
+
 <body>
     <h1 class="title">FIND THE RELIC</h1>
 
-    <form action="{{ route('displaycards') }}" method="GET">
+    <form action="{{ route('inputKode') }}" method="POST">
         @csrf
         <div class="group-selection">
             <span class="selection-label">Pilih kelompok:</span>
             <div class="select-group">
                 <select id="kelompokA" name="kelompokA" required>
-                    <option value="" disabled selected>Kelompok A</option>
-                    @for ($i = 1; $i <= 18; $i++)
-                        <option value="{{ $i }}">Kelompok {{ $i }}</option>
-                    @endfor
+                    <option value="" disabled selected></option>
+                    @foreach ($daftarKelompok as $kelompok)
+                        <option value="{{ $kelompok }}">{{ $kelompok }}</option>
+                    @endforeach
                 </select>
                 <select id="kelompokB" name="kelompokB" required>
-                    <option value="" disabled selected>Kelompok B</option>
-                    @for ($i = 1; $i <= 18; $i++)
-                        <option value="{{ $i }}">Kelompok {{ $i }}</option>
-                    @endfor
+                    <option value="" disabled selected></option>
+                    @foreach ($daftarKelompok as $kelompok)
+                        <option value="{{ $kelompok }}">{{ $kelompok }}</option>
+                    @endforeach
                 </select>
             </div>
         </div>
 
         <div class="group-selection">
             <div class="select-group">
-                <button type="submit" name="submits" class="start-button">KELOMPOK A</button>
-                <button type="submit" name="submits" class="start-button">KELOMPOK B</button>
+                <button type="submit" name="mulai" class="start-button">MULAI</button>
+                {{-- <button type="submit" name="submitsA" class="start-button">KELOMPOK A</button>
+                <button type="submit" name="submitsB" class="start-button">KELOMPOK B</button> --}}
             </div>
         </div>
     </form>
 </body>
+
 </html>
