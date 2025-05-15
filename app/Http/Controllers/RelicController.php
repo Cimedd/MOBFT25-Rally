@@ -123,8 +123,7 @@ class RelicController extends Controller
                 'is_relic' => true,
                 'answered' => false,
                 'image' => 'img/Angka 12-01.jpg',
-            ],
-            "poin" => 0
+            ]
         ];
         $cardsB = [
             1 => [
@@ -234,8 +233,7 @@ class RelicController extends Controller
                 'is_relic' => false,
                 'answered' => false,
                 'image' => 'img/Angka 12-01.jpg',
-            ],
-            "poin" => 0
+            ]
         ];
         $daftarKelompok = [
             'Kelompok 1',
@@ -264,8 +262,86 @@ class RelicController extends Controller
 
     public function inputKode(Request $request)
     {
-        session_start();        
-        $_SESSION['player'] = ['kelompokA' => $request->kelompokA, 'kelompokB' => $request->kelompokB];         
+        session_start();
+        $_SESSION['player'] = [['kelompokA' => $request->kelompokA, "poin" => 0], ['kelompokB' => $request->kelompokB, "poin" => 0]];
         return redirect()->route('displaycards');
+    }
+
+    public function masuk(Request $request)
+    {
+        session_start();
+        $cek = false;
+        $kode = $request->kode;
+        $kelompok = $request->input('kelompok');
+        if ($request->input('kelompok') == "A") {
+            $arr = $_SESSION['kartuA'];
+        } else {
+            $arr = $_SESSION['kartuB'];
+        }
+        for ($i = 1; $i < count($arr); $i++) {
+            if ($request->kode == $arr[$i]['code']) {
+                $cek = true;
+                $pertanyaan = $arr[$i]['question'];
+                $pilgan = $arr[$i]['options'];
+                $answer = $arr[$i]['answer'];
+                $image = $arr[$i]['image'];
+                $bool = $arr[$i]['answered'];
+            }
+        }
+        //Pengecekan sudah dijawab atau belum dan kodenya benar atau tidak
+        return view('pertanyaanrelic', compact('kode', 'kelompok', 'pertanyaan', 'pilgan', 'answer', 'image'));
+    }
+
+    public function cekjawaban(Request $request)
+    {
+        session_start();
+        $imgTerjawab = [
+            1 => "img/Relic Anoa-01.jpg",
+            "img/Relic Babi Rusa-01.jpg",
+            "img/Relic Burung Serak-01.jpg",
+            "img/Relic Burung Seriwang-01.jpg",
+            "img/Relic Eboni-01.jpg",
+            "img/Relic Kepiting Kelapa-01.jpg",
+            "img/Relic Kuskus-01.jpg",
+            "img/Relic Lontar-01.jpg",
+            "img/Relic Maleo-01.jpg",
+            "img/Relic Palem-01.jpg",
+            "img/Relic Rangkong-01.jpg",
+            "img/Relic Tarsius-01.jpg"
+        ];
+        $jawabanUser = $request->input('jawaban');
+        $kode = $request->input('kode');
+        $kelompok = $request->input('kelompok');
+
+        if ($kelompok == "A") {
+            $arr = $_SESSION['kartuA'];
+        } else {
+            $arr = $_SESSION['kartuB'];
+        }
+
+        $jawabanBenar = null;
+        for ($i = 1; $i <= count($arr); $i++) {
+            if ($arr[$i]['code'] === $kode) {
+                $jawabanBenar = $arr[$i]['answer'];
+                $arr[$i]['answered'] = true;
+                $arr[$i]['image'] = $imgTerjawab[$i];
+                break;
+            }
+        }
+
+        if ($kelompok == "A") {
+            $_SESSION['kartuA'] = $arr;
+        } else {
+            $_SESSION['kartuB'] = $arr;
+        }
+
+        if ($jawabanUser === $jawabanBenar) {
+            return redirect()->route('displaycards')
+                ->with('message', 'Jawaban kamu benar!');
+        } else {
+            //ERROR
+            return redirect()->route('displaycards')
+                ->with('message', 'Jawaban kamu benar!');
+        }
     }
 }

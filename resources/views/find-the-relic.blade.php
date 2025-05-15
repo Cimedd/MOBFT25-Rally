@@ -102,8 +102,6 @@
         <div class="group-selection">
             <div class="select-group">
                 <button type="submit" name="mulai" class="start-button">MULAI</button>
-                {{-- <button type="submit" name="submitsA" class="start-button">KELOMPOK A</button>
-                <button type="submit" name="submitsB" class="start-button">KELOMPOK B</button> --}}
             </div>
         </div>
     </form>

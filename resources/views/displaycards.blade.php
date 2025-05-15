@@ -136,62 +136,57 @@
             background-color: #34495e;
             transform: translateY(-2px);
         }
+
+        .top-left-buttons {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .top-button {
+            background-color: #007bff;
+        }
     </style>
 </head>
 
 <body>
     <h1 class="title">FIND THE RELIC</h1>
 
+    <div class="top-left-buttons">
+        <button type="button" class="top-button" onclick="pilihKelompok('A')">Kelompok A</button>
+        <button type="button" class="top-button" onclick="pilihKelompok('B')">Kelompok B</button>
+    </div>
+
 
     <div class="card-grid">
         @for ($i = 1; $i <= 12; $i++)
             <button class="card-button">
+                {{-- src nya nanti diganti --}}
                 <img class="gambar" src="img/Angka {{ $i }}-01.jpg" alt="Card {{ $i }}">
             </button>
         @endfor
     </div>
-    {{-- <form action="{{ route('displaycards') }}" method="POST"> --}}
-        <form action="" method="POST">
+    <form action="{{ route('masuk') }}" method="POST">
+        @csrf
         <div class="game-controls">
             <div class="input-group">
                 <label for="kode">INPUT KODE</label>
                 <input type="text" id="kode" name="kode">
             </div>
-
+            <input type="hidden" id="kelompok" name="kelompok" value="">
             <button type="submit" name="submit" class="submit-button">SUBMIT</button>
-
-            <div class="score-section">
-                <p>POIN</p>
-                <?php
-                foreach ($_SESSION['player'] as $key => $value) {
-                    echo "<p>$key: <span>$value</span></p>";
-                }
-                ?>
-            </div>
         </div>
     </form>
-
-    @if (isset($_GET['submit']))
-        <?php
-        $kode = $_GET['kode'];
-        $cek = false;
-        $arr = $_SESSION['kartuA'] ?? ($_SESSION['kartuB'] ?? []);
-        for ($i = 1; $i < count($arr); $i++) {
-            if ($kode == $arr[$i]['code']) {
-                $cek = true;
-            }
-        }
-        ?>
-        @if ($cek)
-            <script>
-                window.location.href = "{{ url('/pertanyaanrelic') }}?kode={{ $kode }}";
-            </script>
-        @else
-            <p style="color:red;">Kode anda salah</p>
-        @endif
-    @endif
+    
     <a href="{{ url('/find-the-relic') }}" class="back-button">← Kembali ke Home</a>
-
+    <script>
+    function pilihKelompok(kode) {
+        document.getElementById('kelompok').value = kode;
+    }
+</script>
 </body>
 
 </html>

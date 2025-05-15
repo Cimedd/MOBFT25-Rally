@@ -142,40 +142,39 @@
                 padding: 20px;
             }
         }
+
+        #messageBox {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        button {
+            margin-top: 10px;
+        }
     </style>
 </head>
 
 <body>
-    <?php
-    session_start();
-    
-    $arr = $_SESSION['kartuA'] ?? ($_SESSION['kartuB'] ?? []);
-    
-    $pertanyaan = '';
-    $pilgan = ['', '', '', ''];
-    $answer = '';
-    $image = '';
-    $bool = false;
-    $index = -1;
-    
-    if (isset($_GET['kode'])) {
-        foreach ($arr as $i => $item) {
-            if ($item['code'] == $_GET['kode']) {
-                $pertanyaan = $item['question'];
-                $pilgan = $item['options'];
-                $answer = $item['answer'];
-                $image = $item['image'];
-                $bool = $item['answered'];
-                $index = $i;
-                break;
-            }
-        }
-    }
-    
-    if (isset($_GET['kelompokAktif'])) {
-        $_SESSION['kelompokAktif'] = $_GET['kelompokAktif'];
-    }
-    ?>
     <div class="container">
         <h1 class="title">FIND THE RELIC</h1>
 
@@ -186,7 +185,7 @@
 
             <div class="question-section">
                 <h2 class="question"><?php echo $pertanyaan; ?></h2>
-                <form action="{{ route('pertanyaanrelic') }}" method="POST">
+                <form action="{{ route('cekJawaban') }}" method="POST">
                     @csrf
                     <div class="options">
                         <label class="option">
@@ -202,29 +201,30 @@
                             <input type="radio" name="jawaban" value="D"><?php echo $pilgan[3]; ?>
                         </label>
                     </div>
-
-
-
-                    <button type="submit" name="submitPertanyaan" class="submit-button">SUBMIT JAWABAN</button>
+                    <input type="hidden" name="kode" value="{{ $kode }}">
+                    <input type="hidden" name="kelompok" value="{{ $kelompok }}">
+                    <button type="button" name="submitPertanyaan" onclick="showMessageBox()" class="submit-button">SUBMIT JAWABAN</button>
+                    <div id="overlay"></div>
+                    <div id="messageBox">
+                        <p>Ini adalah pesan kustom!</p>
+                        <button type="submit" onclick="closeMessageBox()">Tutup</button>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
-    <?php
-    if (isset($_GET['submitPertanyaan'])) {
-        if ($_GET['jawaban'] == $answer) {
-            $arr[$index]['answered'] = true;
-            $_SESSION['pemain'][$_SESSION['kelompokAktif']] += 1;
-            $_SESSION['kartuA'] = $arr;
-            echo "<script>alert('Jawaban benar!'); window.location.href='/find-the-relic';</script>";
-        } else {
-            echo "<script>alert('Jawaban salah.'); window.location.href='/displaycards';</script>";
-        }
-    }
-    
-    ?>
     <script>
-        // Add selected class to clicked option
+        function showMessageBox() {
+            document.getElementById("messageBox").style.display = "block";
+            document.getElementById("overlay").style.display = "block";
+        }
+
+        function closeMessageBox() {
+            document.getElementById("messageBox").style.display = "none";
+            document.getElementById("overlay").style.display = "none";
+        }
+    </script>
+    <script>
         document.querySelectorAll('.option').forEach(option => {
             option.addEventListener('click', function() {
                 document.querySelectorAll('.option').forEach(opt => {

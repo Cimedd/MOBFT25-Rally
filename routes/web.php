@@ -23,10 +23,11 @@ Route::get('/find-the-relic',[RelicController::class, 'findTheRelic']);
 Route::get('/relic', [RelicController::class, 'index'])->name('displaycards');
 Route::post('/relic', [RelicController::class, 'inputKode'])->name('inputKode');
 
-Route::get('/pertanyaanrelic/{kode}', function () {
-    $kode = request()->get('kode');
-    return view('pertanyaanrelic', ['kode' => $kode]);
-})->name('pertanyaanrelic');
+Route::post('/pertanyaan', [RelicController::class, 'masuk'])->name('masuk');
+
+Route::post('/cekjawaban', [RelicController::class, 'cekJawaban'])->name('cekJawaban');
+
+Route::get('/pertanyaanrelic', [RelicController::class, 'pertanyaanrelic'])->name('pertanyaanrelic');
 
 Route::get('/jungle-clash', function () {
     return view('jungle-clash');
