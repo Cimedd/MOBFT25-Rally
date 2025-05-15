@@ -147,17 +147,40 @@
         }
 
         .top-button {
-            background-color: #007bff;
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+
+        .top-button:hover {
+            background-color: #34495e;
         }
     </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
 </head>
 
 <body>
     <h1 class="title">FIND THE RELIC</h1>
-
+    @if (isset($err))
+        <div class="alert alert-danger" role="alert">
+            {{ $err }}
+        </div>
+    @endif
     <div class="top-left-buttons">
-        <button type="button" class="top-button" onclick="pilihKelompok('A')">Kelompok A</button>
-        <button type="button" class="top-button" onclick="pilihKelompok('B')">Kelompok B</button>
+        <form method="GET" action="{{ route('showRelic') }}" style="display:inline;">
+            <input type="hidden" name="kelompok" value="A">
+            <button type="submit" class="top-button">Kelompok A</button>
+        </form>
+        <form method="GET" action="{{ route('showRelic') }}" style="display:inline;">
+            <input type="hidden" name="kelompok" value="B">
+            <button type="submit" class="top-button">Kelompok B</button>
+        </form>
     </div>
 
 
@@ -165,7 +188,7 @@
         @for ($i = 1; $i <= 12; $i++)
             <button class="card-button">
                 {{-- src nya nanti diganti --}}
-                <img class="gambar" src="img/Angka {{ $i }}-01.jpg" alt="Card {{ $i }}">
+                <img class="gambar" src='{{ $arr[$i]['image'] }}' alt="Card {{ $i }}">
             </button>
         @endfor
     </div>
@@ -176,17 +199,20 @@
                 <label for="kode">INPUT KODE</label>
                 <input type="text" id="kode" name="kode">
             </div>
-            <input type="hidden" id="kelompok" name="kelompok" value="">
+            <input type="hidden" id="kelompok" name="kelompok" value={{ $kelompok }}>
             <button type="submit" name="submit" class="submit-button">SUBMIT</button>
         </div>
     </form>
-    
+
     <a href="{{ url('/find-the-relic') }}" class="back-button">← Kembali ke Home</a>
     <script>
-    function pilihKelompok(kode) {
-        document.getElementById('kelompok').value = kode;
-    }
-</script>
+        function pilihKelompok(kode) {
+            document.getElementById('kelompok').value = kode;
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>

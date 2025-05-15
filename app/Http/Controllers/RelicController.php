@@ -263,9 +263,25 @@ class RelicController extends Controller
     public function inputKode(Request $request)
     {
         session_start();
+        $kelompok = "A";
+        $arr = $_SESSION['kartuA'];
         $_SESSION['player'] = [['kelompokA' => $request->kelompokA, "poin" => 0], ['kelompokB' => $request->kelompokB, "poin" => 0]];
-        return redirect()->route('displaycards');
+        return view('displaycards', compact('kelompok', 'arr'));
     }
+
+    public function showRelic(Request $request)
+    {
+        session_start();
+        $kelompok = $request->input('kelompok');
+        if ($kelompok == 'A') {
+            $arr = $_SESSION['kartuA'];
+        } else {
+            $arr = $_SESSION['kartuB'];
+        }
+
+        return view('displaycards', compact('kelompok', 'arr'));
+    }
+
 
     public function masuk(Request $request)
     {
@@ -286,9 +302,20 @@ class RelicController extends Controller
                 $answer = $arr[$i]['answer'];
                 $image = $arr[$i]['image'];
                 $bool = $arr[$i]['answered'];
+                break;
             }
         }
         //Pengecekan sudah dijawab atau belum dan kodenya benar atau tidak
+        if (!$cek) {
+            $err = "Kode tidak ditemukan!";
+            return view('displaycards', compact('kelompok', 'arr', 'err'));
+        }
+
+        if ($bool === true) {
+            $err = "Pertanyaan ini sudah dijawab!";
+            return view('displaycards', compact('kelompok', 'arr', 'err'));
+        }
+
         return view('pertanyaanrelic', compact('kode', 'kelompok', 'pertanyaan', 'pilgan', 'answer', 'image'));
     }
 
@@ -336,11 +363,16 @@ class RelicController extends Controller
         }
 
         if ($jawabanUser === $jawabanBenar) {
-            return redirect()->route('displaycards')
+            if ($kelompok == "A") {
+                $_SESSION['player'][0]['poin'] += 1;
+            } else {
+                $_SESSION['player'][1]['poin'] += 1;
+            }
+            return view('displaycards', compact('kelompok', 'arr'))
                 ->with('message', 'Jawaban kamu benar!');
         } else {
             //ERROR
-            return redirect()->route('displaycards')
+            return view('displaycards', compact('kelompok', 'arr'))
                 ->with('message', 'Jawaban kamu benar!');
         }
     }
