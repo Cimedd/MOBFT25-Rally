@@ -266,26 +266,33 @@ class RelicController extends Controller
         $kelompok = "A";
         $arr = $_SESSION['kartuA'];
         $_SESSION['player'] = [['kelompokA' => $request->kelompokA, "poin" => 0], ['kelompokB' => $request->kelompokB, "poin" => 0]];
-        return view('displaycards', compact('kelompok', 'arr'));
+        $startTime = now()->toIso8601String(); 
+        $_SESSION['waktuMulai'] = $startTime;
+        $duration = 7 * 60;
+        return view('displaycards', compact('kelompok', 'arr', 'startTime', 'duration'));
     }
 
     public function showRelic(Request $request)
     {
         session_start();
+        $startTime = $_SESSION['waktuMulai'];
+        $duration = 7 * 60;
         $kelompok = $request->input('kelompok');
         if ($kelompok == 'A') {
             $arr = $_SESSION['kartuA'];
         } else {
             $arr = $_SESSION['kartuB'];
         }
-        
-        return view('displaycards', compact('kelompok', 'arr'));
+
+        return view('displaycards', compact('kelompok', 'arr', 'startTime', 'duration'));
     }
 
 
     public function masuk(Request $request)
     {
         session_start();
+        $startTime = $_SESSION['waktuMulai'];
+        $duration = 7 * 60;
         $cek = false;
         $kode = $request->kode;
         $kelompok = $request->input('kelompok');
@@ -308,15 +315,15 @@ class RelicController extends Controller
         //Pengecekan sudah dijawab atau belum dan kodenya benar atau tidak
         if (!$cek) {
             $err = "Kode tidak ditemukan!";
-            return view('displaycards', compact('kelompok', 'arr', 'err'));
+            return view('displaycards', compact('kelompok', 'arr', 'err', 'startTime', 'duration'));
         }
 
         if ($bool === true) {
             $err = "Pertanyaan ini sudah dijawab!";
-            return view('displaycards', compact('kelompok', 'arr', 'err'));
+            return view('displaycards', compact('kelompok', 'arr', 'err', 'startTime', 'duration'));
         }
 
-        return view('pertanyaanrelic', compact('kode', 'kelompok', 'pertanyaan', 'pilgan', 'answer', 'image'));
+        return view('pertanyaanrelic', compact('kode', 'kelompok', 'pertanyaan', 'pilgan', 'answer', 'image', 'startTime', 'duration'));
     }
 
     public function cekjawaban(Request $request)
@@ -375,5 +382,20 @@ class RelicController extends Controller
             $message = "Jawaban Salah!";
             return response()->json(['message' => $message]);
         }
+    }
+
+    public function endrelic(Request $request) {
+        session_start();
+        if($_SESSION['player'][0]['poin'] > $_SESSION['player'][1]['poin']) {
+            $pemenang = $_SESSION['player'][0]['kelompokA'];
+            $pesan = $pemenang." menang dengan ".$_SESSION['player'][0]['poin']." poin!";
+        } else if($_SESSION['player'][0]['poin'] < $_SESSION['player'][1]['poin']) {
+            $pemenang = $_SESSION['player'][1]['kelompokB'];
+            $pesan = $pemenang." menang dengan ".$_SESSION['player'][1]['poin']." poin!";
+        } else {
+            $pesan = "Kedua tim menang dengan seri!";
+        }
+
+        return view('relicselesai', compact('pesan'));
     }
 }

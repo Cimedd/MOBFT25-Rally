@@ -171,13 +171,26 @@
         button {
             margin-top: 10px;
         }
+
+        #timer {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            font-weight: bold;
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            z-index: 9999;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
         <h1 class="title">FIND THE RELIC</h1>
-
+        <div id="timer" style="font-size: 2rem; font-weight: bold;"></div>
         <div class="content">
             <div>
                 <img class="card-number" src="{{ asset($image) }}" alt="Relic Image">
@@ -241,7 +254,7 @@
 
         function goToDisplayCards() {
             const kelompok = document.querySelector('input[name="kelompok"]').value;
-            window.location.href = "{{ route('showRelic') }}"+ "?kelompok=" + kelompok;
+            window.location.href = "{{ route('showRelic') }}" + "?kelompok=" + kelompok;
         }
     </script>
 
@@ -266,6 +279,32 @@
                 this.querySelector('input').checked = true;
             });
         });
+    </script>
+    {{-- Timer --}}
+    <script>
+        const startTime = new Date("{{ $startTime }}").getTime();
+        const duration = {{ $duration }} * 1000; // dalam ms
+        const endTime = startTime + duration;
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const remaining = endTime - now;
+
+            if (remaining <= 0) {
+                document.getElementById("timer").textContent = "WAKTU HABIS!";
+                // Optional: redirect atau submit otomatis
+                window.location.href = "{{ route('endRelic') }}";
+                return;
+            }
+
+            const minutes = Math.floor((remaining / 1000) / 60);
+            const seconds = Math.floor((remaining / 1000) % 60);
+            document.getElementById("timer").textContent =
+                `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        }
+
+        updateTimer();
+        setInterval(updateTimer, 1000);
     </script>
 </body>
 

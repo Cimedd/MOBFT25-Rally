@@ -20,10 +20,14 @@ Route::get('/', function () {
 
 Route::get('/find-the-relic',[RelicController::class, 'findTheRelic']);
 
+Route::post('/relicselesai',[RelicController::class, 'relicSelesai']);
+
 Route::get('/relic', [RelicController::class, 'index'])->name('displaycards');//Ndak dipakai (?)
 Route::post('/relic', [RelicController::class, 'inputKode'])->name('inputKode');
 
 Route::get('/showrelic', [RelicController::class, 'showRelic'])->name('showRelic');
+
+Route::get('/endrelic', [RelicController::class, 'endRelic'])->name('endRelic');
 
 Route::post('/pertanyaan', [RelicController::class, 'masuk'])->name('masuk');
 

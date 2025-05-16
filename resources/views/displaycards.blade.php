@@ -160,6 +160,19 @@
         .top-button:hover {
             background-color: #34495e;
         }
+
+        #timer {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            font-weight: bold;
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            z-index: 9999;
+        }
     </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
@@ -183,6 +196,7 @@
         </form>
     </div>
 
+    <div id="timer"></div>
 
     <div class="card-grid">
         @for ($i = 1; $i <= 12; $i++)
@@ -212,6 +226,32 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous">
+    </script>
+    {{-- Timer --}}
+    <script>
+        const startTime = new Date("{{ $startTime }}").getTime();
+        const duration = {{ $duration }} * 1000; // dalam ms
+        const endTime = startTime + duration;
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const remaining = endTime - now;
+
+            if (remaining <= 0) {
+                document.getElementById("timer").textContent = "WAKTU HABIS!";
+                // Optional: redirect atau submit otomatis
+                window.location.href = "{{ route('endRelic') }}";
+                return;
+            }
+
+            const minutes = Math.floor((remaining / 1000) / 60);
+            const seconds = Math.floor((remaining / 1000) % 60);
+            document.getElementById("timer").textContent =
+                `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        }
+
+        updateTimer();
+        setInterval(updateTimer, 1000);
     </script>
 </body>
 
