@@ -185,7 +185,7 @@
 
             <div class="question-section">
                 <h2 class="question"><?php echo $pertanyaan; ?></h2>
-                <form action="{{ route('cekJawaban') }}" method="POST">
+                <form id="formJawaban">
                     @csrf
                     <div class="options">
                         <label class="option">
@@ -203,16 +203,48 @@
                     </div>
                     <input type="hidden" name="kode" value="{{ $kode }}">
                     <input type="hidden" name="kelompok" value="{{ $kelompok }}">
-                    <button type="button" name="submitPertanyaan" onclick="showMessageBox()" class="submit-button">SUBMIT JAWABAN</button>
-                    <div id="overlay"></div>
-                    <div id="messageBox">
-                        <p>Ini adalah pesan kustom!</p>
-                        <button type="submit" onclick="closeMessageBox()">Tutup</button>
-                    </div>
+                    <button type="submit" name="submitPertanyaan" onclick="showMessageBox()"
+                        class="submit-button">SUBMIT JAWABAN</button>
                 </form>
+                <div id="overlay" style="display:none;"></div>
+                <div id="messageBox" style="display:none;">
+                    <p id="messageText"></p>
+                    <button onclick="goToDisplayCards()">Tutup</button>
+                </div>
             </div>
         </div>
     </div>
+    <script>
+        document.getElementById("formJawaban").addEventListener("submit", function(e) {
+            e.preventDefault(); // cegah submit normal
+
+            const formData = new FormData(this);
+
+            fetch("{{ route('cekJawaban') }}", {
+                    method: "POST",
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // tampilkan messageBox
+                    document.getElementById("messageText").innerText = data.message;
+                    document.getElementById("overlay").style.display = "block";
+                    document.getElementById("messageBox").style.display = "block";
+                })
+                .catch(error => {
+                    console.error("Terjadi kesalahan:", error);
+                });
+        });
+
+        function goToDisplayCards() {
+            const kelompok = document.querySelector('input[name="kelompok"]').value;
+            window.location.href = "{{ route('showRelic') }}"+ "?kelompok=" + kelompok;
+        }
+    </script>
+
     <script>
         function showMessageBox() {
             document.getElementById("messageBox").style.display = "block";

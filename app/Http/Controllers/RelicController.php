@@ -278,7 +278,7 @@ class RelicController extends Controller
         } else {
             $arr = $_SESSION['kartuB'];
         }
-
+        
         return view('displaycards', compact('kelompok', 'arr'));
     }
 
@@ -362,18 +362,18 @@ class RelicController extends Controller
             $_SESSION['kartuB'] = $arr;
         }
 
+        $message = "";
         if ($jawabanUser === $jawabanBenar) {
             if ($kelompok == "A") {
                 $_SESSION['player'][0]['poin'] += 1;
             } else {
                 $_SESSION['player'][1]['poin'] += 1;
             }
-            return view('displaycards', compact('kelompok', 'arr'))
-                ->with('message', 'Jawaban kamu benar!');
+            $message = "Jawaban Benar!";
+            return response()->json(['message' => $message]);
         } else {
-            //ERROR
-            return view('displaycards', compact('kelompok', 'arr'))
-                ->with('message', 'Jawaban kamu benar!');
+            $message = "Jawaban Salah!";
+            return response()->json(['message' => $message]);
         }
     }
 }
