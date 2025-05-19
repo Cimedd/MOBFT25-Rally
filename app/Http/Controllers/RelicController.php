@@ -157,7 +157,7 @@ class RelicController extends Controller
                 'question' => 'Motto dari Universitas Surabaya adalah ...',
                 'options' => ['A. Unggul dan Terdepan', 'B. To be the first University in Heart and Mind', 
                                 'C. Bridging Education to the World', 'D. To be the Best University'],
-                'answer' => 'C',
+                'answer' => 'B. To be the first University in Heart and Mind',
                 'is_relic' => false,
                 'answered' => false,
                 'image' => 'img/Angka 3-01.jpg',
@@ -238,7 +238,7 @@ class RelicController extends Controller
                 'image' => 'img/Angka 11-01.jpg',
             ],
             12 => [
-                'code' => 'SUNGAI',
+                'code' => 'DANAU',
                 'question' => 'Festival budaya besar yang diadakan di Toraja sebagai bagian dari ritual kematian adalah ...',
                 'options' => ['A. Rambu Solo', 'B. Cap Go Meh', 'C. Panen Raya', 'D. Pesta Laut'],
                 'answer' => 'A. Rambu Solo',
@@ -380,7 +380,7 @@ class RelicController extends Controller
         } else {
             $_SESSION['kartuB'] = $arr;
         }
-
+        
         $message = "";
         if ($jawabanUser === $jawabanBenar) {
             if ($kelompok == "A") {
@@ -405,7 +405,7 @@ class RelicController extends Controller
             $pemenang = $_SESSION['player'][1]['kelompokB'];
             $pesan = $pemenang." menang dengan ".$_SESSION['player'][1]['poin']." poin!";
         } else {
-            $pesan = "Kedua tim menang dengan seri!";
+            $pesan = "Silahkan mencari 1 kartu fisik tambahan lagi untuk kedua tim!";
         }
 
         return view('relicselesai', compact('pesan'));

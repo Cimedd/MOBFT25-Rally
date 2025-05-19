@@ -202,16 +202,20 @@
                     @csrf
                     <div class="options">
                         <label class="option">
-                            <input type="radio" name="jawaban" value="A" required><?php echo $pilgan[0]; ?>
+                            <input type="radio" name="jawaban" value="<?php echo $pilgan[0]; ?>" required>
+                            <?php echo $pilgan[0]; ?>
                         </label>
                         <label class="option">
-                            <input type="radio" name="jawaban" value="B"><?php echo $pilgan[1]; ?>
+                            <input type="radio" name="jawaban" value="<?php echo $pilgan[1]; ?>">
+                            <?php echo $pilgan[1]; ?>
                         </label>
                         <label class="option">
-                            <input type="radio" name="jawaban" value="C"><?php echo $pilgan[2]; ?>
+                            <input type="radio" name="jawaban" value="<?php echo $pilgan[2]; ?>">
+                            <?php echo $pilgan[2]; ?>
                         </label>
                         <label class="option">
-                            <input type="radio" name="jawaban" value="D"><?php echo $pilgan[3]; ?>
+                            <input type="radio" name="jawaban" value="<?php echo $pilgan[3]; ?>">
+                            <?php echo $pilgan[3]; ?>
                         </label>
                     </div>
                     <input type="hidden" name="kode" value="{{ $kode }}">
