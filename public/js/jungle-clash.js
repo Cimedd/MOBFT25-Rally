@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // };
 
     let gameData = {
-        //dealerName: '',
+        dealerName: '',
         group1Name: 'Group 1',
         group2Name: 'Group 2',
         group1Score: 0,
@@ -47,33 +47,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Side Navigation
-    window.openNav = () => {
-        sideNav.style.width = '250px';
-    };
+    // window.openNav = () => {
+    //     sideNav.style.width = '250px';
+    // };
 
-    window.closeNav = () => {
-        sideNav.style.width = '0';
-    };
+    // window.closeNav = () => {
+    //     sideNav.style.width = '0';
+    // };
 
     window.saveNames = () => {
-        //const dealerNameInput = document.getElementById('dealerName');
+        const dealerNameInput = document.getElementById('dealerName');
         const group1NameInput = document.getElementById('group1Name');
         const group2NameInput = document.getElementById('group2Name');
 
-        if (group1NameInput.value.trim() === '' || group2NameInput.value.trim() === '') {
+        if (dealerNameInput.value.trim() === '' || group1NameInput.value.trim() === '' || group2NameInput.value.trim() === '') {
             alert('Please enter names for the dealer and both groups.');
             return;
         }
-        if (group1NameInput.value === group2NameInput.value) {
-        alert('Group 1 and Group 2 cannot be the same.');
-        return;
-        }
-        // if (dealerNameInput.value.trim() === '' || group1NameInput.value.trim() === '' || group2NameInput.value.trim() === '') {
-        //     alert('Please enter names for the dealer and both groups.');
-        //     return;
-        // }
 
-        //gameData.dealerName = dealerNameInput.value.trim();
+        gameData.dealerName = dealerNameInput.value.trim();
         gameData.group1Name = group1NameInput.value.trim();
         gameData.group2Name = group2NameInput.value.trim();
 
@@ -84,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         gameData.levelsLocked = false;
         toggleLevelCirclesAccess(false);
-        //closeNav();
+        closeNav();
         alert('Names saved! You can now start the game.');
     };
     
@@ -121,11 +113,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const popup = document.getElementById(popupId);
         if (!popup) return;
 
-        if (gameData.levelsLocked && (popupId === 'startPopup' || popupId.startsWith('level'))) {
-            alert('Please enter dealer and group names in the side menu first by clicking the menu icon (☰).');
-            return;
-        }
-        
+        // if (gameData.levelsLocked && (popupId === 'startPopup' || popupId.startsWith('level'))) {
+        //     alert('Please enter dealer and group names in the side menu first by clicking the menu icon (☰).');
+        //     return;
+        // }
+        popup.classList.remove('hidden'); 
         popup.style.display = 'flex';
     };
 

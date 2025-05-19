@@ -1,60 +1,18 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="../css/style-jungle-clash.css" rel="stylesheet">
-  <title>Jungle Clash MOB FT 2025</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="../css/style-jungle-clash.css" rel="stylesheet">
+    <title>Jungle Clash MOB FT 2025</title>
 </head>
-
-<body class="bg-green-200 font-serif m-0 overflow-hidden">
-<!-- Landing Page -->
-<section id="landingPage" class="relative w-full h-screen">
-    <div class="bg-[url('../../public/img/pexels-tonka-1123767.jpg')] bg-white/20 bg-cover bg-center absolute top-0 left-0 w-full h-full flex flex-col justify-center items-start p-12">
-        <h2 class="text-white text-xl absolute top-12 left-12">Rally Games</h2>
-        <h2 class="absolute top-12 right-12 text-white text-xl">MOB FT 2025</h2>
-        <h1 class="text-6xl font-bold text-white leading-tight">JUNGLE<br />CLASH</h1>
-        <button id="playButton" class="mt-8 px-8 py-3 bg-green-600 text-white rounded-full text-lg hover:bg-green-800">PLAY!</button>
-        <label for="group1Name" class="pl-8 py-2 text-[18px] text-white no-underline block transition-all duration-300">Group 1:</label>
-        <select id="group1Name" name="group1Name" value="Group1" class="mb-2 bg-gray-800 border border-gray-600 text-white rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
-            <option value="">-- Select Group --</option>
-            <option value="Group 1">Group 1</option>
-            <option value="Group 2">Group 2</option>
-            <option value="Group 3">Group 3</option>
-            <option value="Group 4">Group 4</option>
-            <option value="Group 5">Group 5</option>
-            <option value="Group 6">Group 6</option>
-            <option value="Group 7">Group 7</option>
-            <option value="Group 8">Group 8</option>
-            <option value="Group 9">Group 9</option>
-            <option value="Group 10">Group 10</option>
-        </select>
-        {{-- <input type="select" id="group1Name" name="group1Name" value="Group 1" class="mb-2 bg-gray-800 border border-gray-600 text-white rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"> --}}
-
-        <label for="group2Name" class="pl-8 py-2 text-[18px] text-white no-underline block transition-all duration-300">Group 2 Name:</label>
-        <select id="group2Name" name="group2Name" value="Group2" class="mb-2 bg-gray-800 border border-gray-600 text-white rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
-            <option value="">-- Select Group --</option>
-            <option value="Group 1">Group 1</option>
-            <option value="Group 2">Group 2</option>
-            <option value="Group 3">Group 3</option>
-            <option value="Group 4">Group 4</option>
-            <option value="Group 5">Group 5</option>
-            <option value="Group 6">Group 6</option>
-            <option value="Group 7">Group 7</option>
-            <option value="Group 8">Group 8</option>
-            <option value="Group 9">Group 9</option>
-            <option value="Group 10">Group 10</option>
-        </select>
-        {{-- <input type="select" id="group2Name" name="group2Name" value="Group 2" class="mb-2 bg-gray-800 border border-gray-600 text-white rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"> --}}
-        <button type="button" onclick="saveNames()" class="bg-green-600 hover:bg-green-700 border-none text-white p-4 text-center no-underline inline-block text-[1.5rem] m-[2px_1px] cursor-pointer rounded-lg transition-colors duration-300 ease-in-out mx-4">Save Names</button>
-    </div>
-</section>
+<body>
 
 <!-- Main Game Page -->
 <div id="mainGamePage" class="h-screen flex flex-col justify-center items-center absolute w-full transition-transform duration-500 ease-in-out">
     <!-- Header -->
     <div class="bg-green-700 absolute top-0 left-0 w-full flex justify-between items-center px-5 py-5 text-white text-2xl cursor-pointer text-center flex-grow">
-        <span class="text-2xl cursor-pointer" onclick="openNav()">&#9776;</span>
         <div class="flex-grow text-center">
             <h1 class="text-4xl font-bold">JUNGLE CLASH</h1>
             <p class="text-lg">Hope you enjoy it, yeah!</p>
@@ -82,63 +40,13 @@
 
     <!-- Footer -->
     <div class="absolute bottom-5 w-full flex justify-around items-center text-white text-2xl py-2 bg-[rgba(0,0,0,0.3)]">
-        <div id="group1NameDisplay">Group 1</div>
+        <div id="group1NameDisplay">    {{ $group1 }}</div>
         <div id="group1Score">00</div>
         <div>:</div>
         <div id="group2Score">00</div>
-        <div id="group2NameDisplay">Group 2</div>
+        <div id="group2NameDisplay">    {{ $group2 }}</div>
     </div>
 </div>
-
-
-<!-- Side Navigation -->
-<div id="mySidenav" class="fixed top-0 left-0 h-full w-0 z-10 bg-[#111] overflow-x-hidden transition-all duration-500 pt-[60px]">
-    <a href="javascript:void(0)" class="absolute top-0 right-[25px] text-4xl ml-[50px] pl-8 py-2 text-[18px] text-[#818181] no-underline block transition-all duration-300" 
-    onclick="closeNav()">&times;</a>
-
-    <form class="flex flex-col gap-2 px-8">
-            {{-- <label for="dealerName" class="pl-8 py-2 text-[18px] text-white no-underline block transition-all duration-300">Penpos Name:</label>
-            <!-- <select id="dealerName" name="dealerName" class="mb-2 bg-gray-800 border border-gray-600 text-white rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
-                <option value="0">Andi</option>
-                <option value="1">Budi</option>
-            </select> -->
-            <input type="text" id="dealerName" name="dealerName" class="mb-2 bg-gray-800 border border-gray-600 text-white rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"> --}}
-
-        <label for="group1Name" class="pl-8 py-2 text-[18px] text-white no-underline block transition-all duration-300">Group 1:</label>
-        <select id="group1Name" name="group1Name" value="Group1" class="mb-2 bg-gray-800 border border-gray-600 text-white rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
-            <option value="">-- Select Group --</option>
-            <option value="Group 1">Group 1</option>
-            <option value="Group 2">Group 2</option>
-            <option value="Group 3">Group 3</option>
-            <option value="Group 4">Group 4</option>
-            <option value="Group 5">Group 5</option>
-            <option value="Group 6">Group 6</option>
-            <option value="Group 7">Group 7</option>
-            <option value="Group 8">Group 8</option>
-            <option value="Group 9">Group 9</option>
-            <option value="Group 10">Group 10</option>
-        </select>
-        {{-- <input type="select" id="group1Name" name="group1Name" value="Group 1" class="mb-2 bg-gray-800 border border-gray-600 text-white rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"> --}}
-
-        <label for="group2Name" class="pl-8 py-2 text-[18px] text-white no-underline block transition-all duration-300">Group 2 Name:</label>
-        <select id="group2Name" name="group2Name" value="Group2" class="mb-2 bg-gray-800 border border-gray-600 text-white rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
-            <option value="">-- Select Group --</option>
-            <option value="Group 1">Group 1</option>
-            <option value="Group 2">Group 2</option>
-            <option value="Group 3">Group 3</option>
-            <option value="Group 4">Group 4</option>
-            <option value="Group 5">Group 5</option>
-            <option value="Group 6">Group 6</option>
-            <option value="Group 7">Group 7</option>
-            <option value="Group 8">Group 8</option>
-            <option value="Group 9">Group 9</option>
-            <option value="Group 10">Group 10</option>
-        </select>
-        {{-- <input type="select" id="group2Name" name="group2Name" value="Group 2" class="mb-2 bg-gray-800 border border-gray-600 text-white rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"> --}}
-        <button type="button" onclick="saveNames()" class="bg-green-600 hover:bg-green-700 border-none text-white p-4 text-center no-underline inline-block text-[1.5rem] m-[2px_1px] cursor-pointer rounded-lg transition-colors duration-300 ease-in-out mx-4">Save Names</button>
-    </form>
-</div>
-
 
 <!-- Popups -->
 <div id="startPopup" class="hidden fixed z-20 left-0 top-0 w-full h-full overflow-auto bg-[rgba(0,0,0,0.6)] flex justify-center items-center">
@@ -174,8 +82,8 @@ Di sinilah dimulai ujian pertama…
             <label for="winner1" class="text-gray-700">Winner of Level 1:</label>
             <select id="winner1" name="winner1" class="border p-2 rounded">
                 <option value="">Select Winner</option>
-                <option value="group1">Group 1</option>
-                <option value="group2">Group 2</option>
+                <option value="group1">{{ $group1 }}</option>
+                <option value="group2">{{ $group2 }}</option>
             </select>
         </div>
     </div>
@@ -201,8 +109,8 @@ Hanya kelompok paling tenang dan terkoordinasi yang bisa mengambil isi kotak tan
             <label for="winner2" class="text-gray-700">Winner of Level 2:</label>
             <select id="winner2" name="winner2" class="border p-2 rounded w-full mt-1">
                 <option value="">Select Winner</option>
-                <option value="group1">Group 1</option>
-                <option value="group2">Group 2</option>
+                <option value="group1">{{ $group1 }}</option>
+                <option value="group2">{{ $group2 }}</option>
             </select>
         </div>
     </div>
@@ -226,8 +134,8 @@ Dua kelompok harus berdiri bersilang, menyatukan pikiran untuk membuat mantra da
             <label for="winner3" class="text-gray-700">Winner of Level 3:</label>
             <select id="winner3" name="winner3" class="border p-2 rounded w-full mt-1">
                 <option value="">Select Winner</option>
-                <option value="group1">Group 1</option>
-                <option value="group2">Group 2</option>
+                <option value="group1">{{ $group1 }}</option>
+                <option value="group2">{{ $group2 }}</option>
             </select>
         </div>
     </div>
@@ -245,7 +153,4 @@ Dua kelompok harus berdiri bersilang, menyatukan pikiran untuk membuat mantra da
 <script src="../js/jungle-clash.js"></script>
 
 </body>
-<?php
-
-?>
 </html>
