@@ -32,7 +32,7 @@ Route::get('/pertanyaanrelic', function () {
 })->name('pertanyaanrelic');
 
 Route::prefix('jungleclash')->group(function () {
-    Route::get('/', [JungleClashController::class, 'index']);
+    Route::get('/', [JungleClashController::class, 'index'])->name('jungleclash.index');
     Route::post('/play',[JungleClashController::class, 'play'])->name('jungleclash.play');
 });
 

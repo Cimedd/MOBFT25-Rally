@@ -76,7 +76,7 @@ Di sinilah dimulai ujian pertama…
 </p>
         
         
-        <div class="timer mb-4 text-2xl font-bold text-gray-700">Time: <span id="timer1">10:00</span></div>
+        <div class="timer mb-4 text-2xl font-bold text-gray-700">Time: <span id="timer1">02:00</span></div>
         <button id="startTimer1" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2">Start Timer</button>
         <div class="mt-4">
             <label for="winner1" class="text-gray-700">Winner of Level 1:</label>
@@ -86,6 +86,7 @@ Di sinilah dimulai ujian pertama…
                 <option value="group2">{{ $group2 }}</option>
             </select>
         </div>
+        <button class="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded my-2" onclick="closePopup('level1Popup')">SAVE</button>    
     </div>
 </div>
 
@@ -103,7 +104,7 @@ Hanya kelompok paling tenang dan terkoordinasi yang bisa mengambil isi kotak tan
 1 kelompok kecil akan memilih 1 dari 3 kotak, setiap kotak akan berisi sesuatu yang jumlahnya harus diambil menggunakan sumpit selama 2 menit (setiap orang akan bersuara bebas, namun harus 1 tarikan nafas, setelah nafas habis maka bergantian dengan orang berikutnya)
 </p>
         
-        <div class="timer mb-4 text-2xl font-bold text-gray-700">Time: <span id="timer2">15:00</span></div>
+        <div class="timer mb-4 text-2xl font-bold text-gray-700">Time: <span id="timer2">02:00</span></div>
         <button id="startTimer2" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2">Start Timer</button>
         <div class="mt-4">
             <label for="winner2" class="text-gray-700">Winner of Level 2:</label>
@@ -113,6 +114,7 @@ Hanya kelompok paling tenang dan terkoordinasi yang bisa mengambil isi kotak tan
                 <option value="group2">{{ $group2 }}</option>
             </select>
         </div>
+        <button class="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded my-2" onclick="closePopup('level2Popup')">SAVE</button> 
     </div>
 </div>
 
@@ -128,7 +130,7 @@ Dua kelompok harus berdiri bersilang, menyatukan pikiran untuk membuat mantra da
         <p id="level3Challenge" class="mb-4 text-gray-800"><strong>Challenge:</strong>  Kelompok kecil bergiliran dengan lawan, menyusun kalimat satu kata per orang.
  Tim yang anggotanya berkurang 2 lebih cepat saat akhir duel adalah pemenang.</p>
         
-        <div class="timer mb-4 text-2xl font-bold text-gray-700">Time: <span id="timer3">20:00</span></div>
+        <div class="timer mb-4 text-2xl font-bold text-gray-700">Time: <span id="timer3">02:00</span></div>
         <button id="startTimer3" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2">Start Timer</button>
         <div class="mt-4">
             <label for="winner3" class="text-gray-700">Winner of Level 3:</label>
@@ -138,6 +140,7 @@ Dua kelompok harus berdiri bersilang, menyatukan pikiran untuk membuat mantra da
                 <option value="group2">{{ $group2 }}</option>
             </select>
         </div>
+        <button class="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded my-2" onclick="closePopup('level3Popup')">SAVE</button>
     </div>
 </div>
 
@@ -146,7 +149,11 @@ Dua kelompok harus berdiri bersilang, menyatukan pikiran untuk membuat mantra da
     <div class="bg-[#fefefe] m-auto p-5 border border-[#888] w-4/5 max-w-[500px] rounded-[10px] relative">
         <h2 class="text-2xl font-bold mb-4">Congratulations!</h2>
         <p id="finalWinnerMessage" class="text-xl"></p>
-        <button onclick="closePopup('winnerPopup'); resetGame();" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-4">Play Again</button>
+        
+        <form action="{{ route('jungleclash.index') }}" method="get">
+            <button type='submit' class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-4">Play Again</button>
+        </form>
+
     </div>
 </div>
 
