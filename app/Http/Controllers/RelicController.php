@@ -162,7 +162,7 @@ class RelicController extends Controller
         ];
         $cardsB = [
             1 => [
-                'code' => 'GUA',
+                'code' => 'GOA',
                 'question' => 'Dimanakah lokasi kampus utama Universitas Surabaya?',
                 'options' => [
                     'A. Surabaya Barat',
@@ -336,7 +336,7 @@ class RelicController extends Controller
     {
         session_start();
         $startTime = $_SESSION['waktuMulai'];
-        $duration = 7 * 60;
+        $duration = 7 * 60 ;
         $kelompok = $request->input('kelompok');
         if ($kelompok == 'A') {
             $arr = $_SESSION['kartuA'];
@@ -432,7 +432,7 @@ class RelicController extends Controller
 
         $message = "";
         if ($jawabanUser === $jawabanBenar) {
-            $message = "Jawaban Benar! ";
+            $message = "";
 
             if ($isrelic) {
                 if ($kelompok == "A") {
@@ -451,7 +451,7 @@ class RelicController extends Controller
             if($isrelic) {
                 $message .= "Kartu ini adalah Relic!";
             } else {
-                $message .= "Kartu ini adalah Zonk!";
+                $message .= "Maaf kartu ini Zonk!";
             }
 
             return response()->json(['message' => $message]);
