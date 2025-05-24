@@ -79,7 +79,7 @@
 <body>
     <h1 class="title">FIND THE RELIC</h1>
 
-    <form action="{{ route('inputKode') }}" method="POST">
+    <form action="{{ route('inputKode') }}" method="POST" onsubmit="return validateGroups()">
         @csrf
         <div class="group-selection">
             <span class="selection-label">Pilih kelompok:</span>
@@ -105,6 +105,20 @@
             </div>
         </div>
     </form>
+
+    <script>
+        function validateGroups() {
+            const kelompokA = document.getElementById('kelompokA').value;
+            const kelompokB = document.getElementById('kelompokB').value;
+
+            if (kelompokA === kelompokB) {
+                alert("Kelompok tidak boleh sama!");
+                return false; // Mencegah form untuk disubmit
+            }
+            return true;
+        }
+    </script>
+
 </body>
 
 </html>

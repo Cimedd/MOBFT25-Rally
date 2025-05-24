@@ -173,6 +173,12 @@
             border-radius: 10px;
             z-index: 9999;
         }
+
+        .btn-success {
+            background-color: #28a745; /* Hijau */
+            color: white;
+        }
+
     </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
@@ -188,11 +194,11 @@
     <div class="top-left-buttons">
         <form method="GET" action="{{ route('showRelic') }}" style="display:inline;">
             <input type="hidden" name="kelompok" value="A">
-            <button type="submit" class="top-button">Kelompok A</button>
+            <button type="submit" class="top-button {{ $kelompok == 'A' ? 'btn-success' : '' }}">Kelompok A</button>
         </form>
         <form method="GET" action="{{ route('showRelic') }}" style="display:inline;">
             <input type="hidden" name="kelompok" value="B">
-            <button type="submit" class="top-button">Kelompok B</button>
+            <button type="submit" class="top-button {{ $kelompok == 'B' ? 'btn-success' : '' }}">Kelompok B</button>
         </form>
     </div>
 

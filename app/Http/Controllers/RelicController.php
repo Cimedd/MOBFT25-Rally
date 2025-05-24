@@ -264,9 +264,9 @@ class RelicController extends Controller
             ],
             10 => [
                 'code' => 'EMBUN',
-                'question' => 'Suku Minahasa mayoritas menganut agama ...',
-                'options' => ['A. Islam', 'B. Kristen Protestan', 'C. Katolik', 'D. Hindu'],
-                'answer' => 'B. Kristen Protestan',
+                'question' => 'Makanan khas Sulawesi adalah ...',
+                'options' => ['A. Papeda', 'B. Rendang', 'C. Pempek', 'D. Sop Konro'],
+                'answer' => 'D. Sop Konro',
                 'is_relic' => false,
                 'answered' => false,
                 'image' => 'img/Angka 10-01.jpg',
