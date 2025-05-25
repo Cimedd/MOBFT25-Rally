@@ -54,6 +54,15 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
+        .gambarzonk {
+            width: 140px;
+            height: 210px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            filter: brightness(0.6);
+        }
+
         .game-controls {
             display: flex;
             justify-content: center;
@@ -194,11 +203,11 @@
     <div class="top-left-buttons">
         <form method="GET" action="{{ route('showRelic') }}" style="display:inline;">
             <input type="hidden" name="kelompok" value="A">
-            <button type="submit" class="top-button {{ $kelompok == 'A' ? 'btn-success' : '' }}">Kelompok A</button>
+            <button type="submit" class="top-button {{ $kelompok == 'A' ? 'btn-success' : '' }}">{{ $pemain[0]['kelompokA'] }}</button>
         </form>
         <form method="GET" action="{{ route('showRelic') }}" style="display:inline;">
             <input type="hidden" name="kelompok" value="B">
-            <button type="submit" class="top-button {{ $kelompok == 'B' ? 'btn-success' : '' }}">Kelompok B</button>
+            <button type="submit" class="top-button {{ $kelompok == 'B' ? 'btn-success' : '' }}">{{ $pemain[1]['kelompokB'] }}</button>
         </form>
     </div>
 
@@ -208,7 +217,8 @@
         @for ($i = 1; $i <= 12; $i++)
             <button class="card-button">
                 {{-- src nya nanti diganti --}}
-                <img class="gambar" src='{{ $arr[$i]['image'] }}' alt="Card {{ $i }}">
+                <img class="<?php if($arr[$i]['is_relic'] == false && $arr[$i]['answered'] == true) { echo 'gambarzonk'; } else { echo 'gambar'; }?>" 
+                src='{{ $arr[$i]['image'] }}' alt="Card {{ $i }}">
             </button>
         @endfor
     </div>

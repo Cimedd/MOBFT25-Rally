@@ -295,6 +295,7 @@ class RelicController extends Controller
                 'image' => 'img/Angka 12-01.jpg',
             ]
         ];
+
         $daftarKelompok = [
             'Kelompok 1',
             'Kelompok 2',
@@ -315,6 +316,7 @@ class RelicController extends Controller
             'Kelompok 17',
             'Kelompok 18',
         ];
+        
         $_SESSION['kartuA'] = $cardsA;
         $_SESSION['kartuB'] = $cardsB;
         return view('find-the-relic', compact('cardsA', 'cardsB', 'daftarKelompok'));
@@ -329,7 +331,8 @@ class RelicController extends Controller
         $startTime = now()->toIso8601String();
         $_SESSION['waktuMulai'] = $startTime;
         $duration = 7 * 60;
-        return view('displaycards', compact('kelompok', 'arr', 'startTime', 'duration'));
+        $pemain = $_SESSION['player'];
+        return view('displaycards', compact('pemain', 'kelompok', 'arr', 'startTime', 'duration'));
     }
 
     public function showRelic(Request $request)
@@ -338,13 +341,14 @@ class RelicController extends Controller
         $startTime = $_SESSION['waktuMulai'];
         $duration = 7 * 60 ;
         $kelompok = $request->input('kelompok');
+        $pemain = $_SESSION['player'];
         if ($kelompok == 'A') {
             $arr = $_SESSION['kartuA'];
         } else {
             $arr = $_SESSION['kartuB'];
         }
 
-        return view('displaycards', compact('kelompok', 'arr', 'startTime', 'duration'));
+        return view('displaycards', compact('pemain', 'kelompok', 'arr', 'startTime', 'duration'));
     }
 
 
@@ -356,6 +360,7 @@ class RelicController extends Controller
         $cek = false;
         $kode = $request->kode;
         $kelompok = $request->input('kelompok');
+        $pemain = $_SESSION['player'];
         if ($request->input('kelompok') == "A") {
             $arr = $_SESSION['kartuA'];
         } else {
@@ -375,12 +380,12 @@ class RelicController extends Controller
         //Pengecekan sudah dijawab atau belum dan kodenya benar atau tidak
         if (!$cek) {
             $err = "Kode tidak ditemukan!";
-            return view('displaycards', compact('kelompok', 'arr', 'err', 'startTime', 'duration'));
+            return view('displaycards', compact('pemain', 'kelompok', 'arr', 'err', 'startTime', 'duration'));
         }
 
         if ($bool === true) {
             $err = "Pertanyaan ini sudah dijawab!";
-            return view('displaycards', compact('kelompok', 'arr', 'err', 'startTime', 'duration'));
+            return view('displaycards', compact('pemain', 'kelompok', 'arr', 'err', 'startTime', 'duration'));
         }
 
         return view('pertanyaanrelic', compact('kode', 'kelompok', 'pertanyaan', 'pilgan', 'answer', 'image', 'startTime', 'duration'));
