@@ -82,15 +82,9 @@
     <form action="{{ route('inputKode') }}" method="POST" onsubmit="return validateGroups()">
         @csrf
         <div class="group-selection">
-            <span class="selection-label">Pilih kelompok:</span>
+            <span class="selection-label">Pilih Kelompok:</span>
             <div class="select-group">
                 <select id="kelompokA" name="kelompokA" required>
-                    <option value="" disabled selected></option>
-                    @foreach ($daftarKelompok as $kelompok)
-                        <option value="{{ $kelompok }}">{{ $kelompok }}</option>
-                    @endforeach
-                </select>
-                <select id="kelompokB" name="kelompokB" required>
                     <option value="" disabled selected></option>
                     @foreach ($daftarKelompok as $kelompok)
                         <option value="{{ $kelompok }}">{{ $kelompok }}</option>

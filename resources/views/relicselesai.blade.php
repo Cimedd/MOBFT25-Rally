@@ -43,7 +43,7 @@
     </style>
 </head>
 <body>
-    <p class="pesan">Selamat! {{ $pesan }}</p>
+    <p class="pesan">{{ $pesan }}</p>
     <a href="{{ url('/find-the-relic') }}" class="back-button">← Kembali ke Home</a>
 </body>
 </html>

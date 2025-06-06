@@ -160,141 +160,6 @@ class RelicController extends Controller
                 'image' => 'img/Angka 12-01.jpg',
             ]
         ];
-        $cardsB = [
-            1 => [
-                'code' => 'GOA',
-                'question' => 'Dimanakah lokasi kampus utama Universitas Surabaya?',
-                'options' => [
-                    'A. Surabaya Barat',
-                    'B. Surabaya Timur',
-                    'C. Trawas, Mojokerto',
-                    'D. Tenggilis, Surabaya'
-                ],
-                'answer' => 'D. Tenggilis, Surabaya',
-                'is_relic' => true,
-                'answered' => false,
-                'image' => 'img/Angka 1-01.jpg',
-            ],
-            2 => [
-                'code' => 'TEBING',
-                'question' => 'Suku asli yang mendiami daerah Toraja di Sulawesi Selatan adalah ...',
-                'options' => ['A. Bugis', 'B. Makassar', 'C. Mandar', 'D. Toraja'],
-                'answer' => 'D. Toraja',
-                'is_relic' => true,
-                'answered' => false,
-                'image' => 'img/Angka 2-01.jpg',
-            ],
-            3 => [
-                'code' => 'SEMAK',
-                'question' => 'Motto dari Universitas Surabaya adalah ...',
-                'options' => [
-                    'A. Unggul dan Terdepan',
-                    'B. To be the first University in Heart and Mind',
-                    'C. Bridging Education to the World',
-                    'D. To be the Best University'
-                ],
-                'answer' => 'B. To be the first University in Heart and Mind',
-                'is_relic' => false,
-                'answered' => false,
-                'image' => 'img/Angka 3-01.jpg',
-            ],
-            4 => [
-                'code' => 'BELANTARA',
-                'question' => 'Salah satu ritual pemakaman yang terkenal di Tana Toraja adalah ...',
-                'options' => ['A. Rambu Solo', 'B. Ngaben', 'C. Sekaten', 'D. Mapasilaga Tedong'],
-                'answer' => 'A. Rambu Solo',
-                'is_relic' => true,
-                'answered' => false,
-                'image' => 'img/Angka 4-01.jpg',
-            ],
-            5 => [
-                'code' => 'HIJAU',
-                'question' => 'Siapakah rektor Universitas Surabaya?',
-                'options' => [
-                    'A. Prof. Dr.rer.nat. Maria Goretti Marianti Purwanto',
-                    'B. Djuwari, S.T., Ph.D.',
-                    'C. Dr. Ir. Benny Lianto, MMBAT.',
-                    'D. Dr. Novianty Kresna Darmasetiawan, S.Psi., M.Si.'
-                ],
-                'answer' => 'C. Dr. Ir. Benny Lianto, MMBAT.',
-                'is_relic' => false,
-                'answered' => false,
-                'image' => 'img/Angka 5-01.jpg',
-            ],
-            6 => [
-                'code' => 'RANTING',
-                'question' => 'Ibukota provinsi Sulawesi Selatan adalah ...',
-                'options' => ['A. Kendari', 'B. Palu', 'C. Makassar', 'D. Manado'],
-                'answer' => 'C. Makassar',
-                'is_relic' => true,
-                'answered' => false,
-                'image' => 'img/Angka 6-01.jpg',
-            ],
-            7 => [
-                'code' => 'AKAR',
-                'question' => 'Universitas Surabaya dulunya bernama: ',
-                'options' => [
-                    'A. Universitas Indonesia Timur',
-                    'B. Universitas Trisakti',
-                    'C. Universitas Trisakti Surabaya',
-                    'D. Universitas Nasional Surabaya'
-                ],
-                'answer' => 'C. Universitas Trisakti Surabaya',
-                'is_relic' => true,
-                'answered' => false,
-                'image' => 'img/Angka 7-01.jpg',
-            ],
-            8 => [
-                'code' => 'ANOA',
-                'question' => 'Alat musik tradisional Sulawesi Selatan yang dimainkan dengan cara dipukul adalah ...',
-                'options' => ['A. Sasando', 'B. Gamelan', 'C. Gandrang', 'D. Saluang'],
-                'answer' => 'C. Gandrang',
-                'is_relic' => true,
-                'answered' => false,
-                'image' => 'img/Angka 8-01.jpg',
-            ],
-            9 => [
-                'code' => 'SUNGAI',
-                'question' => 'Apa nama titik kumpul mahasiswa Teknik selama MOB FT 2025?',
-                'options' => ['A. Kantin', 'B. Gazebo Teknik', 'C. Boulevard', 'D. Indomaret Point'],
-                'answer' => 'C. Boulevard',
-                'is_relic' => true,
-                'answered' => false,
-                'image' => 'img/Angka 9-01.jpg',
-            ],
-            10 => [
-                'code' => 'EMBUN',
-                'question' => 'Makanan khas Sulawesi adalah ...',
-                'options' => ['A. Papeda', 'B. Rendang', 'C. Pempek', 'D. Sop Konro'],
-                'answer' => 'D. Sop Konro',
-                'is_relic' => false,
-                'answered' => false,
-                'image' => 'img/Angka 10-01.jpg',
-            ],
-            11 => [
-                'code' => 'TARSIUS',
-                'question' => 'Organisasi yang ada di Fakultas Teknik Universitas Surabaya, kecuali ...',
-                'options' => [
-                    'A. Badan Eksekutif Mahasiswa Fakultas Teknik',
-                    'B. Dewan Perwakilan Mahasiswa Fakultas Teknik',
-                    'C. Kelompok Studi Mahasiswa Teknik Mesin dan Manufaktur',
-                    'D. Kelompok Studi Mahasiswa Teknik Sipil'
-                ],
-                'answer' => 'D. Kelompok Studi Mahasiswa Teknik Sipil',
-                'is_relic' => true,
-                'answered' => false,
-                'image' => 'img/Angka 11-01.jpg',
-            ],
-            12 => [
-                'code' => 'DANAU',
-                'question' => 'Festival budaya besar yang diadakan di Toraja sebagai bagian dari ritual kematian adalah ...',
-                'options' => ['A. Rambu Solo', 'B. Cap Go Meh', 'C. Panen Raya', 'D. Pesta Laut'],
-                'answer' => 'A. Rambu Solo',
-                'is_relic' => false,
-                'answered' => false,
-                'image' => 'img/Angka 12-01.jpg',
-            ]
-        ];
 
         $daftarKelompok = [
             'Kelompok 1',
@@ -318,8 +183,7 @@ class RelicController extends Controller
         ];
         
         $_SESSION['kartuA'] = $cardsA;
-        $_SESSION['kartuB'] = $cardsB;
-        return view('find-the-relic', compact('cardsA', 'cardsB', 'daftarKelompok'));
+        return view('find-the-relic', compact('cardsA', 'daftarKelompok'));
     }
 
     public function inputKode(Request $request)
@@ -327,10 +191,11 @@ class RelicController extends Controller
         session_start();
         $kelompok = "A";
         $arr = $_SESSION['kartuA'];
-        $_SESSION['player'] = [['kelompokA' => $request->kelompokA, "poin" => 0], ['kelompokB' => $request->kelompokB, "poin" => 0]];
+        $_SESSION['player'] = ['kelompokA' => $request->kelompokA, "poin" => 0];
         $startTime = now()->toIso8601String();
         $_SESSION['waktuMulai'] = $startTime;
-        $duration = 7 * 60;
+        $_SESSION['durasi'] = 7 * 60;
+        $duration = $_SESSION['durasi'];
         $pemain = $_SESSION['player'];
         return view('displaycards', compact('pemain', 'kelompok', 'arr', 'startTime', 'duration'));
     }
@@ -339,14 +204,10 @@ class RelicController extends Controller
     {
         session_start();
         $startTime = $_SESSION['waktuMulai'];
-        $duration = 7 * 60 ;
+        $duration = $_SESSION['durasi'];
         $kelompok = $request->input('kelompok');
         $pemain = $_SESSION['player'];
-        if ($kelompok == 'A') {
-            $arr = $_SESSION['kartuA'];
-        } else {
-            $arr = $_SESSION['kartuB'];
-        }
+        $arr = $_SESSION['kartuA'];
 
         return view('displaycards', compact('pemain', 'kelompok', 'arr', 'startTime', 'duration'));
     }
@@ -356,16 +217,13 @@ class RelicController extends Controller
     {
         session_start();
         $startTime = $_SESSION['waktuMulai'];
-        $duration = 7 * 60;
+        $duration = $_SESSION['durasi'];
         $cek = false;
         $kode = $request->kode;
         $kelompok = $request->input('kelompok');
         $pemain = $_SESSION['player'];
-        if ($request->input('kelompok') == "A") {
-            $arr = $_SESSION['kartuA'];
-        } else {
-            $arr = $_SESSION['kartuB'];
-        }
+        $arr = $_SESSION['kartuA'];
+
         for ($i = 1; $i <= count($arr); $i++) {
             if ($request->kode == $arr[$i]['code']) {
                 $cek = true;
@@ -411,12 +269,7 @@ class RelicController extends Controller
         $jawabanUser = $request->input('jawaban');
         $kode = $request->input('kode');
         $kelompok = $request->input('kelompok');
-
-        if ($kelompok == "A") {
-            $arr = $_SESSION['kartuA'];
-        } else {
-            $arr = $_SESSION['kartuB'];
-        }
+        $arr = $_SESSION['kartuA'];
 
         $jawabanBenar = null;
         for ($i = 1; $i <= count($arr); $i++) {
@@ -429,22 +282,13 @@ class RelicController extends Controller
             }
         }
 
-        if ($kelompok == "A") {
-            $_SESSION['kartuA'] = $arr;
-        } else {
-            $_SESSION['kartuB'] = $arr;
-        }
-
+        $_SESSION['kartuA'] = $arr;
         $message = "";
         if ($jawabanUser === $jawabanBenar) {
             $message = "";
 
             if ($isrelic) {
-                if ($kelompok == "A") {
-                    $_SESSION['player'][0]['poin'] += 1;
-                } else if ($kelompok == "B") {
-                    $_SESSION['player'][1]['poin'] += 1;
-                }
+                $_SESSION['player']['poin'] += 1;
                 $message .= "Kartu ini adalah Relic, +1 Poin!";
             } else {
                 $message .= "Maaf kartu ini Zonk!";
@@ -466,14 +310,10 @@ class RelicController extends Controller
     public function endrelic(Request $request)
     {
         session_start();
-        if ($_SESSION['player'][0]['poin'] > $_SESSION['player'][1]['poin']) {
-            $pemenang = $_SESSION['player'][0]['kelompokA'];
-            $pesan = $pemenang . " menang dengan " . $_SESSION['player'][0]['poin'] . " poin!";
-        } else if ($_SESSION['player'][0]['poin'] < $_SESSION['player'][1]['poin']) {
-            $pemenang = $_SESSION['player'][1]['kelompokB'];
-            $pesan = $pemenang . " menang dengan " . $_SESSION['player'][1]['poin'] . " poin!";
+        if ($_SESSION['player']['poin'] >= 4) {
+            $pesan = "Selamat!! kalian menang dengan " . $_SESSION['player']['poin'] . " poin!";
         } else {
-            $pesan = "Silahkan mencari 1 kartu fisik tambahan lagi untuk kedua tim!";
+            $pesan = "Yahh, kalian kekurangan ". ( 4 - $_SESSION['player']['poin'] ) ." relic!";
         }
 
         return view('relicselesai', compact('pesan'));

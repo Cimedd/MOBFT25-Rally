@@ -200,16 +200,6 @@
             {{ $err }}
         </div>
     @endif
-    <div class="top-left-buttons">
-        <form method="GET" action="{{ route('showRelic') }}" style="display:inline;">
-            <input type="hidden" name="kelompok" value="A">
-            <button type="submit" class="top-button {{ $kelompok == 'A' ? 'btn-success' : '' }}">{{ $pemain[0]['kelompokA'] }}</button>
-        </form>
-        <form method="GET" action="{{ route('showRelic') }}" style="display:inline;">
-            <input type="hidden" name="kelompok" value="B">
-            <button type="submit" class="top-button {{ $kelompok == 'B' ? 'btn-success' : '' }}">{{ $pemain[1]['kelompokB'] }}</button>
-        </form>
-    </div>
 
     <div id="timer"></div>
 
