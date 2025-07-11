@@ -1,95 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>Pertanyaan - Find the Relic</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f0f2f5;
+            background-image: url('https://images.unsplash.com/photo-1476231682828-37e571bc172f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
+            color: #fff;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 0;
+        }
+
+        * {
+            position: relative;
+            z-index: 1;
         }
 
         .container {
             width: 90%;
-            max-width: 900px;
+            max-width: 1000px;
             margin: 40px auto;
             text-align: center;
         }
 
         .title {
             font-size: 3.5rem;
-            color: #2c3e50;
-            margin-bottom: 40px;
+            color: #fff;
+            margin-bottom: 30px;
             text-transform: uppercase;
             letter-spacing: 3px;
             font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            position: relative;
+        }
+
+        .title::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #8bc34a, transparent);
+            margin: 20px auto;
         }
 
         .content {
             display: flex;
             justify-content: center;
-            align-items: center;
-            gap: 50px;
+            align-items: center; /* Changed to center for vertical alignment */
+            gap: 40px;
             margin-top: 30px;
         }
 
-        .card-number {
-            font-size: 8rem;
-            font-weight: bold;
+        .card-container {
+            width: 300px;
+            display: flex;
+            align-items: center; /* Center card vertically */
+        }
+
+        .card-image {
+            width: 100%;
+            height: 450px; /* Fixed height */
+            object-fit: cover;
             border-radius: 15px;
-            padding: 40px 60px;
-            min-width: 200px;
-            text-align: center;
-            height: 500px;
+            border: 3px solid #8bc34a;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
 
         .question-section {
+            background-color: rgba(0, 0, 0, 0.7);
             border-radius: 15px;
             padding: 40px;
             width: 100%;
             max-width: 600px;
+            border: 1px solid rgba(139, 195, 74, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            min-height: 450px;
+            display: flex;
+            flex-direction: column;
         }
 
         .question {
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin-bottom: 40px;
-            color: #2c3e50;
+            color: #fff;
+            line-height: 1.4;
         }
 
         .options {
             display: grid;
-            grid-template-columns: repeat(2, 200px);
-            gap: 25px;
-            margin-bottom: 50px;
-            justify-content: center;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
         }
 
         .option {
-            min-width: 200px;
-            max-width: 200px;
-            padding: 15px;
-            border: 2px solid #3498db;
+            padding: 18px;
+            border: 2px solid #8bc34a;
             border-radius: 8px;
             text-align: center;
             cursor: pointer;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 60px;
-            box-sizing: border-box;
+            transition: all 0.3s;
+            background-color: rgba(255, 255, 255, 0.1);
+            font-size: 1.2rem;
         }
 
         .option:hover {
-            background-color: #3498db;
-            color: white;
-            transform: translateY(-5px);
+            background-color: rgba(139, 195, 74, 0.3);
+            transform: translateY(-3px);
         }
 
         .option input {
@@ -97,50 +137,47 @@
         }
 
         .option.selected {
-            background-color: #3498db;
-            color: white;
+            background-color: #8bc34a;
+            color: #2c3e50;
+            font-weight: bold;
         }
 
         .submit-button {
-            padding: 20px 40px;
-            font-size: 1.8rem;
-            background-color: #2ecc71;
-            color: white;
+            padding: 18px 40px;
+            font-size: 1.5rem;
+            background-color: #8bc34a;
+            color: #2c3e50;
             border: none;
             border-radius: 10px;
             cursor: pointer;
             font-weight: bold;
             width: 100%;
             max-width: 400px;
-            margin: 0 auto;
+            margin: 20px auto 0;
             transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .submit-button:hover {
-            background-color: #27ae60;
+            background-color: #7cb342;
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            color: #fff;
         }
 
-        @media (max-width: 768px) {
-            .content {
-                flex-direction: column;
-                gap: 30px;
-            }
-
-            .card-number {
-                font-size: 5rem;
-                padding: 30px 40px;
-            }
-
-            .question {
-                font-size: 2rem;
-            }
-
-            .option {
-                font-size: 1.5rem;
-                padding: 20px;
-            }
+        #timer {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            font-weight: bold;
+            background-color: #8bc34a;
+            color: #2c3e50;
+            padding: 10px 20px;
+            border-radius: 8px;
+            z-index: 9999;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
         #messageBox {
@@ -149,12 +186,16 @@
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
-            background-color: white;
-            padding: 20px;
-            border: 2px solid #333;
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 30px;
+            border: 2px solid #8bc34a;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
             z-index: 1000;
+            color: white;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
         }
 
         #overlay {
@@ -164,36 +205,106 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.7);
             z-index: 999;
         }
 
-        button {
-            margin-top: 10px;
+        #messageBox button {
+            padding: 12px 30px;
+            background-color: #8bc34a;
+            color: #2c3e50;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s;
         }
 
-        #timer {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            font-size: 2rem;
-            font-weight: bold;
-            background-color: #2c3e50;
-            color: white;
-            padding: 10px 15px;
-            border-radius: 10px;
-            z-index: 9999;
+        #messageBox button:hover {
+            background-color: #7cb342;
+            color: #fff;
+        }
+
+        .leaf-decoration {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .leaf1 {
+            top: 50px;
+            left: 50px;
+            transform: rotate(-30deg);
+        }
+
+        .leaf2 {
+            bottom: 50px;
+            right: 50px;
+            transform: rotate(120deg);
+        }
+
+        @media (max-width: 900px) {
+            .content {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .card-image {
+                width: 250px;
+                height: 375px;
+            }
+
+            .question {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .title {
+                font-size: 2.5rem;
+            }
+
+            .question {
+                font-size: 1.4rem;
+                margin-bottom: 30px;
+            }
+
+            .option {
+                padding: 15px;
+                font-size: 1.1rem;
+            }
+
+            .submit-button {
+                font-size: 1.3rem;
+                padding: 15px 30px;
+            }
         }
     </style>
 </head>
 
 <body>
+    <div class="leaf-decoration leaf1">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50,10 C70,10 90,30 90,50 C90,70 70,90 50,90 C30,90 10,70 10,50 C10,30 30,10 50,10 Z" fill="#8bc34a" />
+        </svg>
+    </div>
+    
+    <div class="leaf-decoration leaf2">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50,10 C70,10 90,30 90,50 C90,70 70,90 50,90 C30,90 10,70 10,50 C10,30 30,10 50,10 Z" fill="#8bc34a" />
+        </svg>
+    </div>
+
     <div class="container">
         <h1 class="title">FIND THE RELIC</h1>
-        <div id="timer" style="font-size: 2rem; font-weight: bold;"></div>
+        <div id="timer"></div>
+        
         <div class="content">
-            <div>
-                <img class="card-number" src="{{ asset($image) }}" alt="Relic Image">
+            <div class="card-container">
+                <img class="card-image" src="{{ asset($image) }}" alt="Relic Image">
             </div>
 
             <div class="question-section">
@@ -220,20 +331,21 @@
                     </div>
                     <input type="hidden" name="kode" value="{{ $kode }}">
                     <input type="hidden" name="kelompok" value="{{ $kelompok }}">
-                    <button type="submit" name="submitPertanyaan" onclick="showMessageBox()"
-                        class="submit-button">SUBMIT JAWABAN</button>
+                    <button type="submit" class="submit-button">SUBMIT JAWABAN</button>
                 </form>
-                <div id="overlay" style="display:none;"></div>
-                <div id="messageBox" style="display:none;">
-                    <p id="messageText"></p>
-                    <button onclick="goToDisplayCards()">Tutup</button>
-                </div>
             </div>
         </div>
     </div>
+
+    <div id="overlay"></div>
+    <div id="messageBox">
+        <p id="messageText"></p>
+        <button onclick="goToDisplayCards()">Tutup</button>
+    </div>
+
     <script>
         document.getElementById("formJawaban").addEventListener("submit", function(e) {
-            e.preventDefault(); // cegah submit normal
+            e.preventDefault();
 
             const formData = new FormData(this);
 
@@ -246,7 +358,6 @@
                 })
                 .then(response => response.json())
                 .then(data => {
-                    // tampilkan messageBox
                     document.getElementById("messageText").innerText = data.message;
                     document.getElementById("overlay").style.display = "block";
                     document.getElementById("messageBox").style.display = "block";
@@ -260,21 +371,7 @@
             const kelompok = document.querySelector('input[name="kelompok"]').value;
             window.location.href = "{{ route('showRelic') }}" + "?kelompok=" + kelompok;
         }
-    </script>
 
-    <script>
-        function showMessageBox() {
-            document.getElementById("messageBox").style.display = "block";
-            document.getElementById("overlay").style.display = "block";
-        }
-
-        function closeMessageBox() {
-            document.getElementById("messageBox").style.display = "none";
-            document.getElementById("overlay").style.display = "none";
-        }
-    </script>
-
-    <script>
         document.querySelectorAll('.option').forEach(option => {
             option.addEventListener('click', function() {
                 document.querySelectorAll('.option').forEach(opt => {
@@ -284,11 +381,10 @@
                 this.querySelector('input').checked = true;
             });
         });
-    </script>
-    {{-- Timer --}}
-    <script>
+
+        // Timer functionality
         const startTime = new Date("{{ $startTime }}").getTime();
-        const duration = {{ $duration }} * 1000; // dalam ms
+        const duration = {{ $duration }} * 1000;
         const endTime = startTime + duration;
 
         function updateTimer() {
@@ -297,7 +393,8 @@
 
             if (remaining <= 0) {
                 document.getElementById("timer").textContent = "WAKTU HABIS!";
-                // Optional: redirect atau submit otomatis
+                document.getElementById("timer").style.backgroundColor = "#dc3545";
+                document.getElementById("timer").style.color = "white";
                 window.location.href = "{{ route('endRelic') }}";
                 return;
             }
@@ -306,11 +403,15 @@
             const seconds = Math.floor((remaining / 1000) % 60);
             document.getElementById("timer").textContent =
                 `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                
+            if (remaining < 60000) {
+                document.getElementById("timer").style.backgroundColor = "#dc3545";
+                document.getElementById("timer").style.color = "white";
+            }
         }
 
         updateTimer();
         setInterval(updateTimer, 1000);
     </script>
 </body>
-
 </html>
