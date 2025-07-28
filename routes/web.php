@@ -15,7 +15,7 @@ use App\Http\Controllers\RelicController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/find-the-relic');
 });
 
 Route::get('/find-the-relic',[RelicController::class, 'findTheRelic']);

@@ -310,10 +310,10 @@ class RelicController extends Controller
     public function endrelic(Request $request)
     {
         session_start();
-        if ($_SESSION['player']['poin'] >= 5) {
+        if ($_SESSION['player']['poin'] >= 6) {
             $pesan = "Selamat!! kalian menang dengan " . $_SESSION['player']['poin'] . " poin!";
         } else {
-            $pesan = "Yahh, kalian kekurangan ". ( 5 - $_SESSION['player']['poin'] ) ." relic!";
+            $pesan = "Yahh, kalian kekurangan ". ( 6 - $_SESSION['player']['poin'] ) ." relic!";
         }
 
         return view('relicselesai', compact('pesan'));
