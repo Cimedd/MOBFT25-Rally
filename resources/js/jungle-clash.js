@@ -19,9 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // };
 
     let gameData = {
-        //dealerName: '',
-        group1Name: 'Group 1',
-        group2Name: 'Group 2',
+        dealerName: '',
+        group1Name: document.getElementById('group1NameDisplay').textContent,
+        group2Name: document.getElementById('group2NameDisplay').textContent,
         group1Score: 0,
         group2Score: 0,
         timers: {}, // Stores interval IDs for timers {1: intervalId1, 2: intervalId2, ...}
@@ -47,33 +47,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Side Navigation
-    window.openNav = () => {
-        sideNav.style.width = '250px';
-    };
+    // window.openNav = () => {
+    //     sideNav.style.width = '250px';
+    // };
 
-    window.closeNav = () => {
-        sideNav.style.width = '0';
-    };
+    // window.closeNav = () => {
+    //     sideNav.style.width = '0';
+    // };
 
     window.saveNames = () => {
-        //const dealerNameInput = document.getElementById('dealerName');
+        const dealerNameInput = document.getElementById('dealerName');
         const group1NameInput = document.getElementById('group1Name');
         const group2NameInput = document.getElementById('group2Name');
 
-        if (group1NameInput.value.trim() === '' || group2NameInput.value.trim() === '') {
+        if (dealerNameInput.value.trim() === '' || group1NameInput.value.trim() === '' || group2NameInput.value.trim() === '') {
             alert('Please enter names for the dealer and both groups.');
             return;
         }
-        if (group1NameInput.value === group2NameInput.value) {
-        alert('Group 1 and Group 2 cannot be the same.');
-        return;
-        }
-        // if (dealerNameInput.value.trim() === '' || group1NameInput.value.trim() === '' || group2NameInput.value.trim() === '') {
-        //     alert('Please enter names for the dealer and both groups.');
-        //     return;
-        // }
 
-        //gameData.dealerName = dealerNameInput.value.trim();
+        gameData.dealerName = dealerNameInput.value.trim();
         gameData.group1Name = group1NameInput.value.trim();
         gameData.group2Name = group2NameInput.value.trim();
 
@@ -84,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         gameData.levelsLocked = false;
         toggleLevelCirclesAccess(false);
-        //closeNav();
+        closeNav();
         alert('Names saved! You can now start the game.');
     };
     
@@ -121,11 +113,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const popup = document.getElementById(popupId);
         if (!popup) return;
 
-        if (gameData.levelsLocked && (popupId === 'startPopup' || popupId.startsWith('level'))) {
-            alert('Please enter dealer and group names in the side menu first by clicking the menu icon (☰).');
-            return;
-        }
-        
+        // if (gameData.levelsLocked && (popupId === 'startPopup' || popupId.startsWith('level'))) {
+        //     alert('Please enter dealer and group names in the side menu first by clicking the menu icon (☰).');
+        //     return;
+        // }
+        popup.classList.remove('hidden'); 
         popup.style.display = 'flex';
     };
 
@@ -209,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (document.getElementById('startTimer1')) {
         document.getElementById('startTimer1').addEventListener('click', () => {
-            const tenMinutes = 10 * 60; // Example time: 10 minutes
+            const tenMinutes = 2 * 60; // Example time: 10 minutes
             const display = document.getElementById('timer1');
             startTimer(tenMinutes, display, 1, 'winner1');
             document.getElementById('startTimer1').disabled = true;
@@ -218,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (document.getElementById('startTimer2')) {
         document.getElementById('startTimer2').addEventListener('click', () => {
-            const fifteenMinutes = 15 * 60; // Example time: 15 minutes
+            const fifteenMinutes = 2 * 60; // Example time: 15 minutes
             const display = document.getElementById('timer2');
             startTimer(fifteenMinutes, display, 2, 'winner2');
             document.getElementById('startTimer2').disabled = true;
@@ -227,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (document.getElementById('startTimer3')) {
         document.getElementById('startTimer3').addEventListener('click', () => {
-            const twentyMinutes = 20 * 60; // Example time: 20 minutes
+            const twentyMinutes = 2 * 60; // Example time: 20 minutes
             const display = document.getElementById('timer3');
             startTimer(twentyMinutes, display, 3, 'winner3');
             document.getElementById('startTimer3').disabled = true;
@@ -306,12 +298,7 @@ document.addEventListener('DOMContentLoaded', () => {
         closePopup('winnerPopup'); // Close winner popup if it was open
         
         // Transition back to landing page
-        mainGamePage.style.transform = 'translateY(100%)';
-        landingPage.style.display = 'flex';
-        setTimeout(() => {
-            landingPage.style.transform = 'translateY(0)';
-            mainGamePage.style.display = 'none';
-        }, 50);
+        
     };
 });
 

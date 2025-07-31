@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="../css/style-jungle-clash.css" rel="stylesheet">
+    @vite(['resources/css/app.css','resources/js/app.js','resources/js/jungle-clash.js'])
     <title>Jungle Clash MOB FT 2025</title>
 </head>
 <body>

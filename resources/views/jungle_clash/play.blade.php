@@ -4,20 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="../css/style-jungle-clash.css" rel="stylesheet">
+    @vite(['resources/css/app.css','resources/js/app.js','resources/js/jungle-clash.js'])    
     <title>Jungle Clash MOB FT 2025</title>
 </head>
 <body>
 
 <!-- Main Game Page -->
 <div id="mainGamePage" class="h-screen flex flex-col justify-center items-center absolute w-full transition-transform duration-500 ease-in-out">
+    <div style="background-image: url('{{ asset('img/pexels-tonka-1123767.jpg') }}')" class="absolute top-30 left-0 w-full h-full  bg-cover bg-center opacity-70 z-[-1]"></div>
     <!-- Header -->
-    <div class="bg-green-700 absolute top-0 left-0 w-full flex justify-between items-center px-5 py-5 text-white text-2xl cursor-pointer text-center flex-grow">
+    <div class="bg-blue-700 absolute top-0 left-0 w-full flex justify-between items-center px-5 py-5 text-white text-2xl cursor-pointer text-center flex-grow">
         <div class="flex-grow text-center">
             <h1 class="text-4xl font-bold">JUNGLE CLASH</h1>
             <p class="text-lg">Hope you enjoy it, yeah!</p>
         </div>
-        <div class="w-8"></div> 
+        <div class="w-8"></div>
     </div>
 
     <!-- Game Board -->
@@ -156,8 +157,5 @@ Dua kelompok harus berdiri bersilang, menyatukan pikiran untuk membuat mantra da
 
     </div>
 </div>
-
-<script src="../js/jungle-clash.js"></script>
-
 </body>
 </html>
