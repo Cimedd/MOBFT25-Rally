@@ -11,9 +11,9 @@
 
 <!-- Main Game Page -->
 <div id="mainGamePage" class="h-screen flex flex-col justify-center items-center absolute w-full transition-transform duration-500 ease-in-out">
-    <div style="background-image: url('{{ asset('img/pexels-tonka-1123767.jpg') }}')" class="absolute top-30 left-0 w-full h-full  bg-cover bg-center opacity-70 z-[-1]"></div>
+    <div style="background-image: url('{{ asset('img/pexels-tonka-1123767.jpg') }}')" class="absolute top-0 left-0 w-full h-full  bg-cover bg-center opacity-70 z-[-1]"></div>
     <!-- Header -->
-    <div class="bg-blue-700 absolute top-0 left-0 w-full flex justify-between items-center px-5 py-5 text-white text-2xl cursor-pointer text-center flex-grow">
+    <div class="absolute top-0 left-0 w-full flex justify-between items-center px-5 py-5 text-white text-2xl cursor-pointer text-center flex-grow">
         <div class="flex-grow text-center">
             <h1 class="text-4xl font-bold">JUNGLE CLASH</h1>
             <p class="text-lg">Hope you enjoy it, yeah!</p>
@@ -24,17 +24,14 @@
     <!-- Game Board -->
     <div class="flex justify-around items-center w-4/5 relative mt-[50px] flex-grow px-10">
         <div id="level-start" class="w-[100px] h-[100px] bg-[#6B8E23] rounded-full flex justify-center items-center text-white font-bold shadow-lg cursor-pointer transition-transform duration-200 
-        hover:scale-110 hover:transform">START</div>
+        hover:scale-110 hover:transform">START</div> 
         
-        <div class="absolute border-t-2 border-dashed border-white z-[-1] w-[15%] left-[22.5%] top-1/2 transform -translate-y-1/2"></div>
         <div id="level-1" class="w-[100px] h-[100px] bg-[#6B8E23] rounded-full flex justify-center items-center text-white font-bold shadow-lg cursor-pointer transition-transform duration-200 
-        hover:scale-110 hover:transform">Lv.1</div>
+        hover:scale-110 hover:transform">Lv.1</div>  
         
-        <div class="absolute border-t-2 border-dashed border-white z-[-1] w-[15%] left-[42.5%] top-1/2 transform -translate-y-1/2"></div>
         <div id="level-2" class="w-[100px] h-[100px] bg-[#6B8E23] rounded-full flex justify-center items-center text-white font-bold shadow-lg cursor-pointer transition-transform duration-200 
         hover:scale-110 hover:transform">Lv.2</div>
         
-        <div class="absolute border-t-2 border-dashed border-white z-[-1] w-[15%] left-[62.5%] top-1/2 transform -translate-y-1/2"></div>
         <div id="level-3" class="w-[100px] h-[100px] bg-[#6B8E23] rounded-full flex justify-center items-center text-white font-bold shadow-lg cursor-pointer transition-transform duration-200 
         hover:scale-110 hover:transform">Lv.3</div>
     </div>
@@ -56,8 +53,8 @@
         <h2 class="text-2xl font-bold mb-4">The Adventure Begins!</h2>
         <p class="text-gray-800">
             Setelah berabad-abad tersembunyi di balik kabut tropis, Hutan Rimba Sakti akhirnya terbuka kembali. Konon katanya, hanya mereka yang berhati tangguh, cerdas, dan kompak sebagai satu kesatuan yang bisa menaklukkan rintangan di dalamnya.
-Para pendahulu menyebut petualangan ini sebagai Jungle Clash—ujian suku tertua di rimba untuk mencari jiwa-jiwa pemimpin masa depan. Kini, giliran kalian, para petualang muda dari MOB FT, untuk membuktikan bahwa kalian layak disebut pejuang rimba sejati.
-Hati-hati, setiap sudut hutan menyimpan teka-teki. Setiap tantangan yang kalian hadapi akan menguji keseimbangan, ketangkasan, dan kekuatan kerja sama. Jangan anggap enteng—karena hanya satu kelompok yang bisa keluar sebagai penjaga kehormatan hutan. Dan kini... perjalanan dimulai.
+            Para pendahulu menyebut petualangan ini sebagai Jungle Clash—ujian suku tertua di rimba untuk mencari jiwa-jiwa pemimpin masa depan. Kini, giliran kalian, para petualang muda dari MOB FT, untuk membuktikan bahwa kalian layak disebut pejuang rimba sejati.
+            Hati-hati, setiap sudut hutan menyimpan teka-teki. Setiap tantangan yang kalian hadapi akan menguji keseimbangan, ketangkasan, dan kekuatan kerja sama. Jangan anggap enteng—karena hanya satu kelompok yang bisa keluar sebagai penjaga kehormatan hutan. Dan kini... perjalanan dimulai.
         </p>
     </div>
 </div>
@@ -69,16 +66,20 @@ Hati-hati, setiap sudut hutan menyimpan teka-teki. Setiap tantangan yang kalian 
         <h2 class="text-2xl font-bold mb-2" id="level1Title">Level 1: Ujian Keseimbangan Suku Rimba</h2>
         <p id="level1Story" class="mb-4 text-gray-800">
             Di tengah rimba belantara yang sunyi, para petualang muda menemukan sebuah jembatan kayu tua yang konon hanya bisa dilewati oleh mereka yang punya keseimbangan ala kepala suku. Seekor burung hantu penjaga berkata:
-"Untuk melangkah lebih jauh, kalian harus menunjukkan kestabilan tubuh dan ketenangan jiwa."
-Di sinilah dimulai ujian pertama…
+            "Untuk melangkah lebih jauh, kalian harus menunjukkan kestabilan tubuh dan ketenangan jiwa."
+            Di sinilah dimulai ujian pertama…
         </p>
         <p id="level1Challenge" class="mb-4 text-gray-800"><strong>Challenge:</strong> Jalan bolak-balik dengan buku di kepala.
- Orang terakhir yang paling cepat kembali ke garis start tanpa menjatuhkan buku adalah pemenang game ini.
-</p>
+            Orang terakhir yang paling cepat kembali ke garis start tanpa menjatuhkan buku adalah pemenang game ini.
+        </p>
         
         
         <div class="timer mb-4 text-2xl font-bold text-gray-700">Time: <span id="timer1">02:00</span></div>
-        <button id="startTimer1" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2">Start Timer</button>
+        <div class="flex gap-2 mb-4">
+            <button id="startTimer1" class="bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2">Start Timer</button>
+            <button id="stopTimer1" class="bg-red-500 text-white font-bold py-2 px-4 rounded mb-2">Stop Timer</button>
+            <button id="restartTimer1" class="bg-yellow-500 text-white font-bold py-2 px-4 rounded mb-2">Restart Timer</button>
+        </div>
         <div class="mt-4">
             <label for="winner1" class="text-gray-700">Winner of Level 1:</label>
             <select id="winner1" name="winner1" class="border p-2 rounded">
@@ -106,7 +107,11 @@ Hanya kelompok paling tenang dan terkoordinasi yang bisa mengambil isi kotak tan
 </p>
         
         <div class="timer mb-4 text-2xl font-bold text-gray-700">Time: <span id="timer2">02:00</span></div>
-        <button id="startTimer2" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2">Start Timer</button>
+        <div class="flex gap-2 mb-4">
+            <button id="startTimer2" class="bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2">Start Timer</button>
+            <button id="stopTimer2" class="bg-red-500 text-white font-bold py-2 px-4 rounded mb-2">Stop Timer</button>
+            <button id="restartTimer2" class="bg-yellow-500 text-white font-bold py-2 px-4 rounded mb-2">Restart Timer</button>
+        </div>
         <div class="mt-4">
             <label for="winner2" class="text-gray-700">Winner of Level 2:</label>
             <select id="winner2" name="winner2" class="border p-2 rounded w-full mt-1">
@@ -132,7 +137,11 @@ Dua kelompok harus berdiri bersilang, menyatukan pikiran untuk membuat mantra da
  Tim yang anggotanya berkurang 2 lebih cepat saat akhir duel adalah pemenang.</p>
         
         <div class="timer mb-4 text-2xl font-bold text-gray-700">Time: <span id="timer3">02:00</span></div>
-        <button id="startTimer3" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2">Start Timer</button>
+        <div class="flex gap-2 mb-4">
+            <button id="startTimer3" class="bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2">Start Timer</button>
+            <button id="stopTimer3" class="bg-red-500 text-white font-bold py-2 px-4 rounded mb-2">Stop Timer</button>
+            <button id="restartTimer3" class="bg-yellow-500 text-white font-bold py-2 px-4 rounded mb-2">Restart Timer</button>
+        </div>
         <div class="mt-4">
             <label for="winner3" class="text-gray-700">Winner of Level 3:</label>
             <select id="winner3" name="winner3" class="border p-2 rounded w-full mt-1">
