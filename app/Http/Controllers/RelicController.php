@@ -253,18 +253,18 @@ class RelicController extends Controller
     {
         session_start();
         $imgTerjawab = [
-            1 => "img/Relic Tarsius-01.jpg",
-            "img/Relic Eboni-01.jpg",
-            "img/Relic Anoa-01.jpg",
+            1 => "img/Relic Anoa-01.jpg",
+            "img/Relic Babi Rusa-01.jpg",
             "img/Relic Burung Serak-01.jpg",
+            "img/Relic Burung Seriwang-01.jpg",
+            "img/Relic Eboni-01.jpg",
+            "img/Relic Kepiting Kelapa-01.jpg",
             "img/Relic Kuskus-01.jpg",
             "img/Relic Lontar-01.jpg",
+            "img/Relic Maleo-01.jpg",
             "img/Relic Palem-01.jpg",
             "img/Relic Rangkong-01.jpg",
-            "img/Relic Maleo-01.jpg",
-            "img/Relic Kepiting Kelapa-01.jpg",
-            "img/Relic Babi Rusa-01.jpg",
-            "img/Relic Burung Seriwang-01.jpg"
+            "img/Relic Tarsius-01.jpg"
         ];
         $jawabanUser = $request->input('jawaban');
         $kode = $request->input('kode');
