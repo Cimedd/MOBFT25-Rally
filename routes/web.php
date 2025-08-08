@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\JungleClashController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RelicController;
 
@@ -35,6 +36,8 @@ Route::post('/cekjawaban', [RelicController::class, 'cekJawaban'])->name('cekJaw
 
 Route::get('/pertanyaanrelic', [RelicController::class, 'pertanyaanrelic'])->name('pertanyaanrelic');
 
-Route::get('/jungle-clash', function () {
-    return view('jungle-clash');
+Route::prefix('jungleclash')->group(function () {
+    Route::get('/', [JungleClashController::class, 'index'])->name('jungleclash.index');
+    Route::post('/play',[JungleClashController::class, 'play'])->name('jungleclash.play');
 });
+
