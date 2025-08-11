@@ -14,9 +14,14 @@ use App\Http\Controllers\RelicController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+/*
 Route::get('/', function () {
     return redirect('/find-the-relic');
+});
+*/
+
+Route::get('/', function () {
+    return view('home');
 });
 
 Route::get('/find-the-relic',[RelicController::class, 'findTheRelic']);
