@@ -12,7 +12,7 @@
     @csrf
         <div style="background-image: url('{{ asset('img/pexels-tonka-1123767.jpg') }}')" class="bg-white/20 bg-cover bg-center absolute top-0 left-0 w-full h-full flex flex-col justify-center items-start p-12">
         <h2 class="text-white text-xl absolute top-12 left-12">Rally Games</h2>
-        <h2 class="absolute top-12 right-12 text-white text-xl">MOB FT 2025</h2>
+        <img src="{{ asset('img/LOGO MOBFT FIXX_Teks Kanan.png') }}" alt="MOBFT 2025 Logo" class="absolute top-5 right-5 w-48 h-auto">
         <h1 class="text-6xl font-bold text-white leading-tight">JUNGLE<br />CLASH</h1>
         
         <label for="group1Name" class="pl-8 py-2 text-[18px] text-white no-underline block transition-all duration-300">Group 1 :</label>
