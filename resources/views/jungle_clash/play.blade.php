@@ -103,7 +103,7 @@
 Hanya kelompok paling tenang dan terkoordinasi yang bisa mengambil isi kotak tanpa mengusik semangat hutan.
         </p>
         <p id="level2Challenge" class="mb-4 text-gray-800"><strong>Challenge:</strong> Ambil isi kotak pakai sumpit, satu per satu tahan napas.
-1 kelompok kecil akan memilih 1 dari 3 kotak, setiap kotak akan berisi sesuatu yang jumlahnya harus diambil menggunakan sumpit selama 2 menit (setiap orang akan bersuara bebas, namun harus 1 tarikan nafas, setelah nafas habis maka bergantian dengan orang berikutnya)
+1 kelompok kecil akan memilih 1 dari 4 kotak, setiap kotak akan berisi sesuatu yang jumlahnya harus diambil menggunakan sumpit selama 2 menit (setiap orang akan bersuara bebas, namun harus 1 tarikan nafas, setelah nafas habis maka bergantian dengan orang berikutnya)
 </p>
         
         <div class="timer mb-4 text-2xl font-bold text-gray-700">Time: <span id="timer2">02:00</span></div>
@@ -133,7 +133,7 @@ Hanya kelompok paling tenang dan terkoordinasi yang bisa mengambil isi kotak tan
             Tiba-tiba, dari semak-semak muncul seekor harimau rimba yang siap menyerang. Namun, legenda mengatakan bahwa hewan buas itu akan tenang bila mendengar mantra yang disusun dengan irama sempurna.
 Dua kelompok harus berdiri bersilang, menyatukan pikiran untuk membuat mantra dari kata-kata ajaib. Tapi ingat, siapa yang gagal bicara atau keluar jalur... akan dikorbankan oleh waktu.
         </p>
-        <p id="level3Challenge" class="mb-4 text-gray-800"><strong>Challenge:</strong>  Kelompok kecil bergiliran dengan lawan, menyusun kalimat satu kata per orang.
+        <p id="level3Challenge" class="mb-4 text-gray-800"><strong>Challenge:</strong>  Kelompok kecil bergiliran dengan lawan, menyusun satu kata per orang.
  Tim yang anggotanya berkurang 2 lebih cepat saat akhir duel adalah pemenang.</p>
         
         <div class="timer mb-4 text-2xl font-bold text-gray-700">Time: <span id="timer3">02:00</span></div>
