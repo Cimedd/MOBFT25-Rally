@@ -11,15 +11,15 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     let gameData = {
-        group1Name: 'Group 1',
-        group2Name: 'Group 2',
+        group1Name: document.getElementById('group1NameDisplay').textContent,
+        group2Name: document.getElementById('group2NameDisplay').textContent,
         group1Score: 0,
         group2Score: 0,
         timers: {},
         remainingTimes: {}, 
         levelsLocked: false,
         levelWinners: { 1: null, 2: null, 3: null }
-    };
+    };    
 
     // --- Fungsi Utama ---
 
@@ -153,11 +153,9 @@ document.addEventListener('DOMContentLoaded', () => {
         let winnerMessage = "";
         if (gameData.group1Score > gameData.group2Score) {
             winnerMessage = `${gameData.group1Name} wins the Jungle Clash!`;
-        } else if (gameData.group2Score > gameData.group2Score) {
+        } else if (gameData.group2Score > gameData.group1Score) {
             winnerMessage = `${gameData.group2Name} wins the Jungle Clash!`;
-        } else {
-            winnerMessage = "It's a tie in the Jungle Clash!";
-        }
+        } 
         document.getElementById('finalWinnerMessage').textContent = winnerMessage;
         openPopup('winnerPopup');
     }

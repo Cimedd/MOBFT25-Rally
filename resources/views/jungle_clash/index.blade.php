@@ -24,7 +24,7 @@
             <option value="SEMESTA 4">SEMESTA 4</option>
             <option value="SEMESTA 5">SEMESTA 5</option>
             <option value="SEMESTA 6">SEMESTA 6</option>
-            <option value="SEMESTA 7">SEMESTA7</option>
+            <option value="SEMESTA 7">SEMESTA 7</option>
             <option value="SEMESTA 8">SEMESTA 8</option>
             <option value="SEMESTA 9">SEMESTA 9</option>
             <option value="SEMESTA 10">SEMESTA 10</option>
@@ -48,7 +48,7 @@
             <option value="SEMESTA 4">SEMESTA 4</option>
             <option value="SEMESTA 5">SEMESTA 5</option>
             <option value="SEMESTA 6">SEMESTA 6</option>
-            <option value="SEMESTA 7">SEMESTA7</option>
+            <option value="SEMESTA 7">SEMESTA 7</option>
             <option value="SEMESTA 8">SEMESTA 8</option>
             <option value="SEMESTA 9">SEMESTA 9</option>
             <option value="SEMESTA 10">SEMESTA 10</option>
